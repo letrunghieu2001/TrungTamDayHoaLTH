@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('address')->nullable();
             $table->string('city')->nullable();
+            $table->string('district')->nullable();
+            $table->string('ward')->nullable();
             $table->string('bank')->nullable();
             $table->string('credit_number')->nullable();
             $table->text('about')->nullable();
@@ -34,7 +36,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreignID('role_id')->constrained('roles')->cascadeOnDelete();
-            $table->foreignID('school_year_id')->constrained('school_years')->cascadeOnDelete();
+            $table->foreignID('school_year_id')->nullable()->constrained('school_years')->cascadeOnDelete();
         });
     }
 
