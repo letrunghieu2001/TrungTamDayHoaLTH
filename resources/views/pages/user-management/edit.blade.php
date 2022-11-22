@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Tạo người dùng'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Chỉnh sửa người dùng'])
     <style>
         .custom-profile-pic {
             color: transparent;
@@ -58,17 +58,18 @@
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="{{ asset('storage/avatar/default-avatar.png') }}" alt="profile_image"
+                        <img src="{{ asset('storage/avatar/' . $user->avatar) }}" alt="profile_image"
                             class="w-100 border-radius-lg shadow-sm">
                     </div>
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            Họ và tên
+                            {{ $user->firstname ?? 'Firstname' }} {{ $user->lastname ?? 'Lastname' }} -
+                            {{ $user->unique_id }}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
-                            Quyền
+                            {{ $user->role->name }}
                         </p>
                     </div>
                 </div>
@@ -82,8 +83,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <form role="form" method="POST" action={{ route('user.store') }} enctype="multipart/form-data">
+                    <form role="form" method="POST" action={{ route('user.update', [$user->id]) }}
+                        enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Thông tin cá nhân</p>
@@ -103,7 +106,7 @@
                                             </label>
                                             <input id="file" name="avatar" type="file"
                                                 onchange="loadFile(event)" />
-                                            <img src="{{ asset('storage/avatar/default-avatar.png') }}" id="output"
+                                            <img src="{{ asset('storage/avatar/' . $user->avatar) }}" id="output"
                                                 width="500" />
                                         </div>
                                     </div>
@@ -115,21 +118,21 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Họ</label>
                                         <input class="form-control" type="text" name="firstname"
-                                            value="{{ old('firstname') }}">
+                                            value="{{ $user->firstname }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tên</label>
                                         <input class="form-control" type="text" name="lastname"
-                                            value="{{ old('lastname') }}">
+                                            value="{{ $user->lastname }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Địa chỉ email</label>
                                         <input class="form-control" type="email" name="email"
-                                            value="{{ old('email') }}">
+                                            value="{{ $user->email }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -138,27 +141,13 @@
                                         <select name="role_id" class="form-select">
                                             <option class="not-select" value="" disabled selected>
                                                 -- Quyền --</option>
-                                            <option value="1" @if (old('role_id') == "1") selected @endif>
+                                            <option value="1" @if ($user->role_id == "1") selected @endif>
                                                 Quản trị viên</option>
-                                            <option value="2" @if (old('role_id') == "2") selected @endif>
+                                            <option value="2" @if ($user->role_id == "2") selected @endif>
                                                 Giáo viên</option>
-                                            <option value="3" @if (old('role_id') == "3") selected @endif>
+                                            <option value="3" @if ($user->role_id == "3") selected @endif>
                                                 Học sinh</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="password" class="form-control-label">Mật khẩu</label>
-                                        <input class="form-control" type="password" id="password" name="password"
-                                            placeholder="Mật khẩu">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="password" class="form-control-label">Xác nhận mật khẩu</label>
-                                        <input class="form-control" type="password" id="password_confirmation"
-                                            name="password_confirmation" placeholder="Xác nhận mật khẩu">
                                     </div>
                                 </div>
                             </div>
@@ -169,14 +158,14 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Số điện thoại</label>
                                         <input class="form-control" type="text" name="phone"
-                                            value="{{ old('phone') }}">
+                                            value="{{ $user->phone }}">
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Ngày sinh</label>
                                         <input class="form-control" type="date" name="dob"
-                                            value="{{ old('dob') }}">
+                                            value="{{ $user->dob }}">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -185,11 +174,11 @@
                                         <select name="gender" class="form-select">
                                             <option class="not-select" value="" disabled selected>
                                                 -- Giới tính --</option>
-                                            <option value="Nam" @if (old('gender') == 'Nam') selected @endif>
+                                            <option value="Nam" @if ($user->gender == 'Nam') selected @endif>
                                                 Nam</option>
-                                            <option value="Nữ" @if (old('gender') == 'Nữ') selected @endif>
+                                            <option value="Nữ" @if ($user->gender == 'Nữ') selected @endif>
                                                 Nữ</option>
-                                            <option value="Khác" @if (old('gender') == 'Khác') selected @endif>
+                                            <option value="Khác" @if ($user->gender == 'Khác') selected @endif>
                                                 Khác</option>
                                         </select>
                                     </div>
@@ -198,7 +187,7 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Địa chỉ</label>
                                         <input class="form-control" type="text" name="address"
-                                            value="{{ old('address') }}">
+                                            value="{{ $user->address }}">
                                     </div>
                                 </div>
                             </div>
@@ -209,14 +198,14 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Ngân hàng</label>
                                         <input class="form-control" type="text" name="bank"
-                                            value="{{ old('bank') }}">
+                                            value="{{ $user->bank }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Số tài khoản</label>
                                         <input class="form-control" type="text" name="credit_number"
-                                            value="{{ old('credit_number') }}">
+                                            value="{{ $user->credit_number }}">
                                     </div>
                                 </div>
                             </div>
@@ -227,17 +216,63 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Đôi nét về bản
                                             thân</label>
-                                        <textarea class="form-control" type="text" name="about" rows="6" style="resize: none">{{ old('about') }}
+                                        <textarea class="form-control" type="text" name="about" rows="6" style="resize: none">{{ $user->about }}
                                         </textarea>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
+                    <hr class="horizontal dark">
+                    <p class="text-uppercase text-sm">Tài khoản</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" style="background-color: blue">Đổi mật
+                                khẩu</button>
+                            <form action="{{ route('user.update_password', [$user->id]) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="new_password" class="form-label form-label-required">Mật
+                                                        khẩu mới</label>
+                                                    <input type="password" class="form-control" name="new_password"
+                                                        id="new_password">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="new_password_confirmation"
+                                                        class="form-label form-label-required">Xác nhận mật khẩu
+                                                        mới</label>
+                                                    <input type="password" class="form-control"
+                                                        id="new_password_confirmation" name="new_password_confirmation">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Đóng</button>
+                                                    <button type="submit" class="btn btn-primary">Xác
+                                                        nhận</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
+    </div>
+    @include('layouts.footers.auth.footer')
     </div>
     <script>
         var loadFile = function(event) {

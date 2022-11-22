@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordUserRequest;
 use App\Http\Requests\UpdateAvatarMyProfileRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
@@ -64,5 +66,29 @@ class UserProfileController extends Controller
         ]);
 
         return back()->with('succes', 'Thông tin cá nhân đã được thay đổi');
+    }
+
+    public function updatePassword(ChangePasswordUserRequest $request)
+    {
+        if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
+            // The passwords matches
+            $error = 'Mật khẩu hiện tại không đúng';
+        } elseif (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
+            // Current password and new password same
+            $error = 'Mật khẩu mới không được trùng mật khẩu cũ';
+        } else {
+            $id = Auth::user()->id;
+            User::findOrFail($id)
+                ->update([
+                    'password' => $request->get('new_password')
+                ]);
+            $error = null;
+        }
+        if ($error == null) {
+            return back()
+                ->with('succes', 'Mật khẩu đã được thay đổi thành công');
+        } else {
+            return back()->with('error', $error);
+        }
     }
 }

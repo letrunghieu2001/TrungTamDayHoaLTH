@@ -34,7 +34,7 @@
                 <li class="nav-item px-3 d-flex align-items-center text-white" style="justify-content: center">
                     <i class="fa fa-user me-sm-1"></i>
                     <span><a href={{ route('myprofile') }}
-                            style="color: white">{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}</a></span>
+                            style="color: white">{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} - {{ Auth::user()->unique_id }}</a></span>
                 </li>
                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"

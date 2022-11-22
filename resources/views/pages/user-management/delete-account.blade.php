@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Quản lý người dùng'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Danh sách người dùng bị vô hiệu hóa'])
     <div class="row mt-4 mx-4">
         <div id="alert">
             @include('components.alert')
@@ -9,40 +9,29 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
+                    <div>
+                        <a href="{{ URL::signedRoute('user.admin') }}" style="color: blue; font-size: 15px"><i
+                                class="fa-solid fa-arrow-left-long"></i> Trang trước</a>
+                    </div>
                     <div class="d-flex bd-highlight mb-3">
-                    <h6 class="me-auto p-2 bd-highlight" >Quản lý người dùng</h6>
-                    <a href="{{ route('user.create') }}"><button class="btn btn-primary btn-sm ms-auto button-float"
-                            style="margin: 0 20px;" class="p-2 bd-highlight">Tạo người dùng</button></a>
-                    <a href="{{ route('user.delete-account') }}"><button class="btn btn-primary btn-sm ms-auto button-float"
-                            style="margin: 0 20px; background-color: grey" class="p-2 bd-highlight">Danh sách người dùng bị vô hiệu hóa</button></a>
+                        <h6 class="me-auto p-2 bd-highlight">Danh sách người dùng bị vô hiệu hóa</h6>
+                        <form action="{{ route('user.restore-all') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary btn-sm ms-auto button-float" style="margin: 0 20px;"
+                                class="p-2 bd-highlight">Khôi phục toàn bộ người dùng</button>
+                        </form>
                     </div>
                     <form method="GET">
                         @csrf
-                        <div class="input-group search" style="margin: 20px 0;">
+                        <div class="input-group search" style="margin: 10px 0 20px 0;">
                             <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                             <input type="text" name="q" class="form-control" value="{{ request()->get('q') }}"
-                                placeholder="Tìm kiếm quản trị viên...">
+                                placeholder="Tìm kiếm người dùng bị vô hiệu hóa...">
                         </div>
                     </form>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                        <nav>
-                            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-                                <a href="{{ route('user.admin') }}">
-                                    <button class="nav-link" id="nav-home-tab" type="button"
-                                        aria-selected="true">Quản trị
-                                        viên</button>
-                                </a>
-                                <a href="{{ route('user.teacher') }}">
-                                    <button class="nav-link " id="nav-profile-tab" type="button" aria-selected="false">Giáo
-                                        viên</button>
-                                </a>
-                                <a href="{{ route('user.student') }}">
-                                    <button class="nav-link  active" id="nav-contact-tab" aria-selected="false">Học sinh</button>
-                                </a>
-                            </div>
-                        </nav>
                         <div class="tab-content p-3 border bg-light" id="nav-tabContent">
                             <div class="tab-pane fade active show" id="nav-home" role="tabpanel"
                                 aria-labelledby="nav-home-tab">
@@ -85,13 +74,9 @@
                                                     <p class="text-xs text-secondary mb-0">{{ $user->dobFormat }}</p>
                                                 </td>
                                                 <td class="align-middle">
-                                                    @if (Auth::user()->id == $user->id)
-                                                        <a href="{{ route('myprofile') }}"><i
-                                                                class="fa-solid fa-user-pen"></i></a>
-                                                    @else
-                                                        <a href="{{ route('user.edit', [$user->id]) }}"><i
-                                                                class="fa-solid fa-user-pen"></i></a>
-                                                    @endif
+                                                    <a style="cursor: pointer" data-bs-toggle="modal"
+                                                        data-bs-target="#restoreUserModal-{{ $user->id }}"
+                                                        class="tt-icon-btn"><i class="fa-solid fa-trash-arrow-up"></i></a>
                                                     <a style="cursor: pointer" data-bs-toggle="modal"
                                                         data-bs-target="#deleteUserModal-{{ $user->id }}"
                                                         class="tt-icon-btn"><i class="fa-solid fa-user-xmark"></i></a>
@@ -103,22 +88,52 @@
                                                                 <div class="modal-header">
                                                                     <h1 class="modal-title fs-5 d-flex p-2"
                                                                         id="exampleModalLabel">
-                                                                        Vô hiệu hóa người dùng</h1>
+                                                                        Xóa hoàn toàn người dùng</h1>
                                                                     <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Bạn có chắc muốn vô hiệu hóa người dùng này không ?
+                                                                    Bạn có chắc muốn xóa hoàn toàn người dùng này không ?
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Đóng</button>
-                                                                    <form action="{{ route('user.delete', [$user->id]) }}"
+                                                                    <form
+                                                                        action="{{ route('user.force-delete', [$user->id]) }}"
                                                                         method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger">Vô
-                                                                            hiệu hóa</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Xoá</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="restoreUserModal-{{ $user->id }}"
+                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5 d-flex p-2"
+                                                                        id="exampleModalLabel">
+                                                                        Khôi phục người dùng</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Bạn có chắc muốn khôi phục người dùng này không ?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Đóng</button>
+                                                                    <form
+                                                                        action="{{ route('user.restore', [$user->id]) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <button type="submit" class="btn btn-danger">Khôi
+                                                                            phục</button>
                                                                     </form>
                                                                 </div>
                                                             </div>

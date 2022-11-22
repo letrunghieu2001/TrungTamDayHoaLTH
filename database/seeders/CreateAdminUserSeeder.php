@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -28,7 +29,8 @@ class CreateAdminUserSeeder extends Seeder
             'bank' => 'VIB',
             'credit_number' => '048704060117045',
             'avatar' => 'default-avatar.png',
-            'created_at' => Carbon::now()
+            'created_at' => Carbon::now(),
+            'unique_id' => 'AD220001'
         ]);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -39,6 +41,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $dates = ['deleted_at'];
+
     /**
      * Always encrypt the password when it is updated.
      *
@@ -50,7 +54,13 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
-    public $incrementing = false;
+    protected function dobFormat(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => Carbon::parse($attributes['dob'])->format('d-m-Y'),
+            set: fn ($value, $attributes) => Carbon::createFromFormat($attributes['dob'])->format('Y-m-d')
+        );
+    }
 
     public function role()
     {
@@ -85,10 +95,5 @@ class User extends Authenticatable
     public function studentClass()
     {
         return $this->belongsTo(Chemistry::class, 'student_id');
-    }
-
-    public function schoolYear()
-    {
-        return $this->belongsTo(SchoolYear::class, 'school_year_id');
     }
 }

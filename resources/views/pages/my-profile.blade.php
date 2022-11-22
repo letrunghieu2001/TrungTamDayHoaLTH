@@ -65,7 +65,8 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            {{ auth()->user()->firstname ?? 'Firstname' }} {{ auth()->user()->lastname ?? 'Lastname' }}
+                            {{ auth()->user()->firstname ?? 'Firstname' }} {{ auth()->user()->lastname ?? 'Lastname' }} -
+                            {{ auth()->user()->unique_id }}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
                             {{ Auth::user()->role->name }}
@@ -157,9 +158,9 @@
                                         <select name="gender" class="form-select">
                                             <option class="not-select" value="" disabled selected>
                                                 -- Giới tính --</option>
-                                            <option value="Nam" @if ( auth()->user()->gender == 'Nam') selected @endif>
+                                            <option value="Nam" @if (auth()->user()->gender == 'Nam') selected @endif>
                                                 Nam</option>
-                                            <option value="Nữ" @if ( auth()->user()->gender == 'Nữ') selected @endif>
+                                            <option value="Nữ" @if (auth()->user()->gender == 'Nữ') selected @endif>
                                                 Nữ</option>
                                             <option value="Khác" @if (auth()->user()->gender == 'Khác') selected @endif>
                                                 Khác</option>
@@ -170,7 +171,7 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Địa chỉ</label>
                                         <input class="form-control" type="text" name="address"
-                                            value="{{  auth()->user()->address }}">
+                                            value="{{ auth()->user()->address }}">
                                     </div>
                                 </div>
                             </div>
@@ -204,12 +205,65 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
+                    <hr class="horizontal dark">
+                    <p class="text-uppercase text-sm">Tài khoản</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" style="background-color: blue">Đổi mật
+                                khẩu</button>
+                            <form action="{{ route('myprofile.update_password') }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="current_password"
+                                                        class="form-label form-label-required">Mật khẩu hiện
+                                                        tại</label>
+                                                    <input type="password" class="form-control" name="current_password"
+                                                        id="current_password">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="new_password" class="form-label form-label-required">Mật
+                                                        khẩu mới</label>
+                                                    <input type="password" class="form-control" name="new_password"
+                                                        id="new_password">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="new_password_confirmation"
+                                                        class="form-label form-label-required">Xác nhận mật khẩu
+                                                        mới</label>
+                                                    <input type="password" class="form-control"
+                                                        id="new_password_confirmation" name="new_password_confirmation">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Đóng</button>
+                                                    <button type="submit" class="btn btn-primary">Xác
+                                                        nhận</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
+    </div>
+    @include('layouts.footers.auth.footer')
     </div>
     <script>
         var loadFile = function(event) {
