@@ -9,26 +9,63 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function indexAdmin()
+    public function indexAdmin(Request $request)
     {
-        $users = User::where('role_id', '1')->get();
+        $query = User::query()->where('role_id', '1');
+
+        if ($request->has('q')) {
+            $q = trim($request->input('q'));
+            $query->where(function ($query) use ($q) {
+                $query->where('email', 'LIKE', "%" . $q . "%")
+                    ->orWhere('unique_id', 'LIKE', "%" . $q . "%")
+                    ->orWhere(DB::raw("CONCAT(`firstname`, ' ', `lastname`)"), 'LIKE', "%" . $q . "%");
+            });
+        }
+
+        $users = $query->paginate(9);
+
         return view('pages.user-management.user-management-admin', compact('users'));
     }
 
-    public function indexTeacher()
+    public function indexTeacher(Request $request)
     {
-        $users = User::where('role_id', '2')->get();
+        $query = User::query()->where('role_id', '2');
+
+        if ($request->has('q')) {
+            $q = trim($request->input('q'));
+            $query->where(function ($query) use ($q) {
+                $query->where('email', 'LIKE', "%" . $q . "%")
+                    ->orWhere('unique_id', 'LIKE', "%" . $q . "%")
+                    ->orWhere(DB::raw("CONCAT(`firstname`, ' ', `lastname`)"), 'LIKE', "%" . $q . "%");
+            });
+        }
+
+        $users = $query->paginate(9);
+
         return view('pages.user-management.user-management-teacher', compact('users'));
     }
 
-    public function indexStudent()
+    public function indexStudent(Request $request)
     {
-        $users = User::where('role_id', '3')->get();
+        $query = User::query()->where('role_id', '3');
+
+        if ($request->has('q')) {
+            $q = trim($request->input('q'));
+            $query->where(function ($query) use ($q) {
+                $query->where('email', 'LIKE', "%" . $q . "%")
+                    ->orWhere('unique_id', 'LIKE', "%" . $q . "%")
+                    ->orWhere(DB::raw("CONCAT(`firstname`, ' ', `lastname`)"), 'LIKE', "%" . $q . "%");
+            });
+        }
+
+        $users = $query->paginate(9);
+
         return view('pages.user-management.user-management-student', compact('users'));
     }
 
@@ -118,9 +155,6 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        if ($user->avatar != "default-avatar.png") {
-            Storage::disk('public')->delete("avatar/" . $user->avatar);
-        }
         $user->delete();
 
         return back()->with('succes', 'Người dùng trên đã bị vô hiệu hóa');
@@ -128,7 +162,7 @@ class UserController extends Controller
 
     public function deleteAccount()
     {
-        $users = User::onlyTrashed()->get(); 
+        $users = User::onlyTrashed()->get();
         return view('pages.user-management.delete-account', compact('users'));
     }
 
@@ -146,6 +180,9 @@ class UserController extends Controller
 
     public function forceDelete($user)
     {
+        if ($user->avatar != "default-avatar.png") {
+            Storage::disk('public')->delete("avatar/" . $user->avatar);
+        }
         User::onlyTrashed()->where('id', $user)->forceDelete();
         return back()->with('succes', 'Người dùng trên đã bị xóa hoàn toàn khỏi hệ thống');
     }
