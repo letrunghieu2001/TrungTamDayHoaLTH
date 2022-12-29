@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Quản lý người dùng'])
@@ -54,6 +54,9 @@
                                             <tr>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    STT</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                     Mã người dùng</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -67,6 +70,10 @@
                                         <tbody>
                                             @foreach ($users as $user)
                                                 <tr>
+                                                    <td class="align-middle">
+                                                        <span
+                                                            class="text-secondary overflow text-xs font-weight-bold">{{ $users->perPage() * ($users->currentPage() - 1) + $loop->iteration }}</span>
+                                                    </td>
                                                     <td class="align-middle">
                                                         <span
                                                             class="text-secondary text-xs font-weight-bold">{{ $user->unique_id }}</span>
@@ -124,7 +131,8 @@
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
-                                                                            <button type="submit" class="btn btn-danger">Vô
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger">Vô
                                                                                 hiệu hóa</button>
                                                                         </form>
                                                                     </div>
@@ -145,5 +153,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        {{ $users->appends(Request::all())->links() }}
     </div>
 @endsection

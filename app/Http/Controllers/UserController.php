@@ -28,7 +28,7 @@ class UserController extends Controller
             });
         }
 
-        $users = $query->paginate(9);
+        $users = $query->latest()->paginate(9);
 
         return view('pages.user-management.user-management-admin', compact('users'));
     }
@@ -46,7 +46,7 @@ class UserController extends Controller
             });
         }
 
-        $users = $query->paginate(9);
+        $users = $query->latest()->paginate(9);
 
         return view('pages.user-management.user-management-teacher', compact('users'));
     }
@@ -64,7 +64,7 @@ class UserController extends Controller
             });
         }
 
-        $users = $query->paginate(9);
+        $users = $query->latest()->paginate(9);
 
         return view('pages.user-management.user-management-student', compact('users'));
     }
@@ -77,11 +77,16 @@ class UserController extends Controller
     {
         $input = $request->except('password_confirmation');
         $input['password'] = $request->password;
-        $input['avatar'] = $request->avatar;
+        $avatar = $request->avatar;
+
         if ($input['avatar'] == null) {
             $input['avatar'] = 'default-avatar.png';
-        }
+        } else {
+            $avatarName = time() . '.' . $avatar->extension();
+            $avatar->storeAs('public/avatar', $avatarName);
 
+            $input['avatar'] = $avatarName;
+        }
         if ($input['role_id'] == 1) {
             $input['unique_id'] = IdGenerator::generate(['table' => 'users', 'field' => 'unique_id', 'length' => 8, 'prefix' =>  'AD' . date('y'), 'reset_on_prefix_change' => true]);
         }
@@ -162,7 +167,7 @@ class UserController extends Controller
 
     public function deleteAccount()
     {
-        $users = User::onlyTrashed()->get();
+        $users = User::onlyTrashed()->latest()->paginate(9);
         return view('pages.user-management.delete-account', compact('users'));
     }
 

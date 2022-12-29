@@ -3,16 +3,17 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="{{ route('home') }}"
-            target="_blank">
-            <img src="{{ asset("/img/logos/logo.png") }}" class="navbar-brand-img h-100" style="display: flex; margin: auto" alt="main_logo">
+        <a class="navbar-brand m-0" href="{{ route('home') }}">
+            <img src="{{ asset('/img/logos/logo.png') }}" class="navbar-brand-img h-100"
+                style="display: flex; margin: auto" alt="main_logo">
         </a>
     </div>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}"
+                    href="{{ route('dashboard') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -26,7 +27,8 @@
                 <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Quản lý người dùng</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'myprofile' ? 'active' : '' }}" href="{{ route('myprofile') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'myprofile' ? 'active' : '' }}"
+                    href="{{ route('myprofile') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
@@ -34,38 +36,58 @@
                     <span class="nav-link-text ms-1">Trang cá nhân</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}" href="{{ route('user.admin') }}">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Quản lý người dùng</span>
-                </a>
-            </li>
+            @if (Auth::user()->role_id == 1)
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}"
+                        href="{{ route('user.admin') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý người dùng</span>
+                    </a>
+                </li>
+            @endif
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Quản lý blogs</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'tables') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'tables']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'myblog') == true ? 'active' : '' }}"
+                    href="{{ route('myblog.active') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        <i class="fa-solid fa-blog text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Tables</span>
+                    <span class="nav-link-text ms-1">Blogs của tôi</span>
                 </a>
             </li>
+            @if (Auth::user()->role_id == 1)
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'blog-management') == true ? 'active' : '' }}"
+                        href="{{ route('blog.active') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-brands fa-blogger-b text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý blog</span>
+                    </a>
+                </li>
+            @endif
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Quản lý trang chủ</h6>
+            </li>
+            @if (Auth::user()->role_id == 1)
             <li class="nav-item">
-                <a class="nav-link {{  str_contains(request()->url(), 'billing') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'billing']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'news-management') == true ? 'active' : '' }}"
+                    href="{{ route('news.management') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        <i class="fa-solid fa-newspaper text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Billing</span>
+                    <span class="nav-link-text ms-1">Quản lý tin tức</span>
                 </a>
             </li>
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-            </li>
+        @endif
         </ul>
     </div>
 </aside>
