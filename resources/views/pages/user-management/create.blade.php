@@ -138,11 +138,11 @@
                                         <select name="role_id" class="form-select">
                                             <option class="not-select" value="" disabled selected>
                                                 -- Quyền --</option>
-                                            <option value="1" @if (old('role_id') == "1") selected @endif>
+                                            <option value="1" @if (old('role_id') == '1') selected @endif>
                                                 Quản trị viên</option>
-                                            <option value="2" @if (old('role_id') == "2") selected @endif>
+                                            <option value="2" @if (old('role_id') == '2') selected @endif>
                                                 Giáo viên</option>
-                                            <option value="3" @if (old('role_id') == "3") selected @endif>
+                                            <option value="3" @if (old('role_id') == '3') selected @endif>
                                                 Học sinh</option>
                                         </select>
                                     </div>
@@ -227,8 +227,7 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Đôi nét về bản
                                             thân</label>
-                                        <textarea class="form-control" type="text" name="about" rows="6" style="resize: none">{{ old('about') }}
-                                        </textarea>
+                                        <textarea class="form-control" type="text" name="about" rows="6" style="resize: none">{{ old('about') }}</textarea>
                                     </div>
                                 </div>
                             </div>

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('report_comments', function (Blueprint $table) {
             $table->id();
             $table->longText('reason');
-            $table->softDeletes();
             $table->timestamps();
             
             $table->foreignID('comment_id')->constrained('comments')->cascadeOnDelete();
