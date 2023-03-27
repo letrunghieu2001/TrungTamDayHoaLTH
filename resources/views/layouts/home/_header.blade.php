@@ -254,18 +254,38 @@
 
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="{{ route('home') }}">Trang Chủ</a></li>
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Giới thiệu</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="about.html">Về trung tâm</a></li>
-                                <li><a href="courses.html">Đội ngũ giáo viên</a></li>
-                                <li><a href="{{ route('news.index') }}">Tin tức</a></li>
-                                <li><a href="gallery.html">Bảng thành tích</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="events.html">Đăng kí học</a></li>
-                        <li><a href="{{ route('blog.index') }}">Blog</a></li>
+                        <li class="nav-link {{ str_contains(request()->url(), 'home') == true ? 'active' : '' }}"><a href="{{ route('home') }}">Trang Chủ</a></li>
+                        <li> <a class="dropdown-item" data-toggle="modal"
+                            data-target="#signUpModal"
+                            class="tt-icon-btn" style="cursor: pointer"> Đăng kí học </a></li>
+                            <div class="modal fade" id="signUpModal" tabindex="-2"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" style="width:150%">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                Đăng ký học</h1>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span
+                                                    aria-hidden="true">&times;</span></button>
+                                        </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <h3>Quý phụ huynh học sinh muốn đăng ký học vui lòng liên hệ với thầy giáo Hiếu để được tư vấn kĩ càng hơn và kiểm tra trình độ qua:</h3>
+                                                    <p><b>Số điện thoại hoặc Zalo:</b> 0942225766</p>
+                                                    <p><b>Qua email:</b> letrunghieu2001@gmail.com <b>hoặc</b> trungtamdayhoalth@gmail.com</p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Đóng</button>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <li class="nav-link {{ str_contains(request()->url(), 'periodic-table') == true ? 'active' : '' }}"><a href="{{ route('home.periodic-table') }}">Bảng tuần hoàn</a></li>
+                        <li class="nav-link {{ str_contains(request()->url(), 'news') == true ? 'active' : '' }}"><a href="{{ route('news.index') }}">Tin tức</a></li>
+                        <li class="nav-link {{ str_contains(request()->url(), 'blog') == true ? 'active' : '' }}"><a href="{{ route('blog.index') }}">Blog</a></li>
                         @if (Auth::check())
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown"

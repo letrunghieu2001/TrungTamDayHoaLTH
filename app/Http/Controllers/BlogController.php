@@ -30,7 +30,7 @@ class BlogController extends Controller
     public function show(Post $blog)
     {
         $this->authorize('view', $blog);
-        $relatedBlogs = Post::where('category_id', $blog->category_id)->where('status', 1)->inRandomOrder()
+        $relatedBlogs = Post::where('category_id', $blog->category_id)->where('status', 1)->whereNotIn('id', [$blog->id])->inRandomOrder()
             ->limit(4)->get();
         $isPostHeart = null;
         if (Auth::check()) {

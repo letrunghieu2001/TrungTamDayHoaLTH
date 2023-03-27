@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->string('study_address');
             $table->integer('price_per_student');
             $table->string('start_hour');
             $table->string('end_hour');

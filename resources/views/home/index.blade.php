@@ -5,38 +5,52 @@
 @endsection
 
 @section('content')
+    <style>
+        .overflow {
+            display: -webkit-box;
+            max-height: 30.2rem;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            -webkit-line-clamp: 2;
+        }
+    </style>
     <section class="flexslider">
         <ul class="slides">
-            <li style="background-image: url({{ asset('/img/home/slider_1.jpg') }})" class="overlay">
+            <li style="background-image: linear-gradient(to bottom,rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url({{ asset('/img/home/slider_1.jpg') }})"
+                class="overlay">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="probootstrap-slider-text text-center">
-                                <h1 class="probootstrap-heading probootstrap-animate">Quan trọng không phải vị trí bạn đang
+                                <h1 class="probootstrap-heading probootstrap-animate" style="font-family: Lato-Bold">Quan trọng không phải vị trí bạn đang
                                     đứng mà là hướng bạn đang đi</h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </li>
-            <li style="background-image: url({{ asset('/img/home/slider_2.jpg') }})" class="overlay">
+            <li style="background-image:  linear-gradient(to bottom,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url({{ asset('/img/home/slider_2.jpg') }})"
+                class="overlay">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="probootstrap-slider-text text-center">
-                                <h1 class="probootstrap-heading probootstrap-animate">Không chỉ là kiến thức, mà còn là kỹ
+                                <h1 class="probootstrap-heading probootstrap-animate" style="font-family: Lato-Bold">Không chỉ là kiến thức, mà còn là kỹ
                                     năng sống</h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </li>
-            <li style="background-image: url({{ asset('/img/home/slider_3.jpg') }})" class="overlay">
+            <li style="background-image:  linear-gradient(to bottom,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url({{ asset('/img/home/slider_3.jpg') }})"
+                class="overlay">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="probootstrap-slider-text text-center">
-                                <h1 class="probootstrap-heading probootstrap-animate">Định hướng nghề nghiệp, phát triển
+                                <h1 class="probootstrap-heading probootstrap-animate" style="font-family: Lato-Bold">Định hướng nghề nghiệp, phát triển
                                     tương lai</h1>
                             </div>
                         </div>
@@ -79,389 +93,6 @@
             </div>
         </div>
     </section>
-
-    <section class="probootstrap-section" id="probootstrap-counter">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 probootstrap-animate">
-                    <div class="probootstrap-counter-wrap">
-                        <div class="probootstrap-icon">
-                            <i class="fa-solid fa-user-graduate"></i>
-                        </div>
-                        <div class="probootstrap-text">
-                            <span class="probootstrap-counter">
-                                <span class="js-counter" data-from="0" data-to="20203" data-speed="5000"
-                                    data-refresh-interval="50">1</span>
-                            </span>
-                            <span class="probootstrap-counter-label">Số học sinh tốt nghiệp</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 probootstrap-animate">
-                    <div class="probootstrap-counter-wrap">
-                        <div class="probootstrap-icon">
-                            <i class="icon-users2"></i>
-                        </div>
-                        <div class="probootstrap-text">
-                            <span class="probootstrap-counter">
-                                <span class="js-counter" data-from="0" data-to="20203" data-speed="5000"
-                                    data-refresh-interval="50">1</span>
-                            </span>
-                            <span class="probootstrap-counter-label">Số học sinh hiện tại</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 probootstrap-animate">
-                    <div class="probootstrap-counter-wrap">
-                        <div class="probootstrap-icon">
-                            <i class="icon-user-tie"></i>
-                        </div>
-                        <div class="probootstrap-text">
-                            <span class="probootstrap-counter">
-                                <span class="js-counter" data-from="0" data-to="139" data-speed="5000"
-                                    data-refresh-interval="50">1</span>
-                            </span>
-                            <span class="probootstrap-counter-label">Tổng số giáo viên</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix visible-sm-block visible-xs-block"></div>
-                <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 probootstrap-animate">
-                    <div class="probootstrap-counter-wrap">
-                        <div class="probootstrap-icon">
-                            <i class="icon-library"></i>
-                        </div>
-                        <div class="probootstrap-text">
-                            <span class="probootstrap-counter">
-                                <span class="js-counter" data-from="0" data-to="99" data-speed="5000"
-                                    data-refresh-interval="50">1</span>%
-                            </span>
-                            <span class="probootstrap-counter-label">Đỗ đại học</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section
-        class="probootstrap-section probootstrap-section-colored probootstrap-bg probootstrap-custom-heading probootstrap-tab-section"
-        style="background-image: url(img/slider_2.jpg)">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center section-heading probootstrap-animate">
-                    <h2 class="mb0">Nổi bật</h2>
-                </div>
-            </div>
-        </div>
-        <div class="probootstrap-tab-style-1">
-            <ul class="nav nav-tabs probootstrap-center probootstrap-tabs no-border">
-                <li class="active"><a data-toggle="tab" href="#featured-news">Tin tức mới</a></li>
-                <li><a data-toggle="tab" href="#upcoming-events">Topic tranh luận nổi bật</a></li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="probootstrap-section probootstrap-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="tab-content">
-                        <div id="featured-news" class="tab-pane fade in active">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="owl-carousel" id="owl1">
-                                        <div class="item">
-                                            <a href="#" class="probootstrap-featured-news-box">
-                                                <figure class="probootstrap-media"><img src="img/img_sm_3.jpg"
-                                                        alt="Free Bootstrap Template by ProBootstrap.com"
-                                                        class="img-responsive"></figure>
-                                                <div class="probootstrap-text">
-                                                    <h3>Tempora consectetur unde nisi</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, ut.
-                                                    </p>
-                                                    <span class="probootstrap-date"><i class="icon-calendar"></i>July 9,
-                                                        2017</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <!-- END item -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END row -->
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <p><a href="#" class="btn btn-primary">Xem tất cả tin tức mới</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="upcoming-events" class="tab-pane fade">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="owl-carousel" id="owl2">
-                                        <div class="item">
-                                            <a href="#" class="probootstrap-featured-news-box">
-                                                <figure class="probootstrap-media"><img src="img/img_sm_3.jpg"
-                                                        alt="Free Bootstrap Template by ProBootstrap.com"
-                                                        class="img-responsive"></figure>
-                                                <div class="probootstrap-text">
-                                                    <h3>Tempora consectetur unde nisi</h3>
-                                                    <span class="probootstrap-date"><i class="icon-calendar"></i>July 9,
-                                                        2017</span>
-                                                    <span class="probootstrap-location"><i
-                                                            class="icon-location2"></i>White Palace, Brooklyn, NYC</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <!-- END item -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <p><a href="#" class="btn btn-primary">Tới trang blog</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="probootstrap-section probootstrap-bg-white probootstrap-border-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
-                    <h2>Các lớp học hiện tại</h2>
-                    <p class="lead">Phía dưới là một vài lớp học hiện có của trung tâm</p>
-                </div>
-            </div>
-            <!-- END row -->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="probootstrap-service-2 probootstrap-animate">
-                        <div class="image">
-                            <div class="image-bg">
-                                <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
-                            </div>
-                        </div>
-                        <div class="text">
-                            <span class="probootstrap-meta"><i class="icon-calendar2"></i> July 10, 2017</span>
-                            <h3>Application Design</h3>
-                            <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi
-                                voluptatum architecto rerum error.</p>
-                            <p><a href="#" class="btn btn-primary">Enroll now</a> <span
-                                    class="enrolled-count">2,928 students enrolled</span></p>
-                        </div>
-                    </div>
-
-                    <div class="probootstrap-service-2 probootstrap-animate">
-                        <div class="image">
-                            <div class="image-bg">
-                                <img src="img/img_sm_3.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
-                            </div>
-                        </div>
-                        <div class="text">
-                            <span class="probootstrap-meta"><i class="icon-calendar2"></i> July 10, 2017</span>
-                            <h3>Chemical Engineering</h3>
-                            <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi
-                                voluptatum architecto rerum error.</p>
-                            <p><a href="#" class="btn btn-primary">Enroll now</a> <span
-                                    class="enrolled-count">7,202 students enrolled</span></p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-6">
-                    <div class="probootstrap-service-2 probootstrap-animate">
-                        <div class="image">
-                            <div class="image-bg">
-                                <img src="img/img_sm_2.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
-                            </div>
-                        </div>
-                        <div class="text">
-                            <span class="probootstrap-meta"><i class="icon-calendar2"></i> July 10, 2017</span>
-                            <h3>Math Major</h3>
-                            <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi
-                                voluptatum architecto rerum error.</p>
-                            <p><a href="#" class="btn btn-primary">Enroll now</a> <span
-                                    class="enrolled-count">12,582 students enrolled</span></p>
-                        </div>
-                    </div>
-
-                    <div class="probootstrap-service-2 probootstrap-animate">
-                        <div class="image">
-                            <div class="image-bg">
-                                <img src="img/img_sm_4.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
-                            </div>
-                        </div>
-                        <div class="text">
-                            <span class="probootstrap-meta"><i class="icon-calendar2"></i> July 10, 2017</span>
-                            <h3>English Major</h3>
-                            <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi
-                                voluptatum architecto rerum error.</p>
-                            <p><a href="#" class="btn btn-primary">Enroll now</a> <span
-                                    class="enrolled-count">9,582 students enrolled</span></p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <section class="probootstrap-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
-                    <h2>Gặp gỡ đội ngũ giáo viên chất lượng</h2>
-                    <p class="lead">Đội ngũ giáo viên được tuyển chọn và rèn luyện kĩ càng, nhằm đem đến chất lượng tốt
-                        nhất cho trung tâm</p>
-                </div>
-            </div>
-            <!-- END row -->
-
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="probootstrap-teacher text-center probootstrap-animate">
-                        <figure class="media">
-                            <img src="img/person_1.jpg" alt="Free Bootstrap Template by ProBootstrap.com"
-                                class="img-responsive">
-                        </figure>
-                        <div class="text">
-                            <h3>Chris Worth</h3>
-                            <p>Physical Education</p>
-                            <ul class="probootstrap-footer-social">
-                                <li class="twitter"><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li class="facebook"><a href="#"><i class="icon-facebook2"></i></a></li>
-                                <li class="instagram"><a href="#"><i class="icon-instagram2"></i></a></li>
-                                <li class="google-plus"><a href="#"><i class="icon-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="probootstrap-teacher text-center probootstrap-animate">
-                        <figure class="media">
-                            <img src="img/person_5.jpg" alt="Free Bootstrap Template by ProBootstrap.com"
-                                class="img-responsive">
-                        </figure>
-                        <div class="text">
-                            <h3>Janet Morris</h3>
-                            <p>English Teacher</p>
-                            <ul class="probootstrap-footer-social">
-                                <li class="twitter"><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li class="facebook"><a href="#"><i class="icon-facebook2"></i></a></li>
-                                <li class="instagram"><a href="#"><i class="icon-instagram2"></i></a></li>
-                                <li class="google-plus"><a href="#"><i class="icon-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix visible-sm-block visible-xs-block"></div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="probootstrap-teacher text-center probootstrap-animate">
-                        <figure class="media">
-                            <img src="img/person_6.jpg" alt="Free Bootstrap Template by ProBootstrap.com"
-                                class="img-responsive">
-                        </figure>
-                        <div class="text">
-                            <h3>Linda Reyez</h3>
-                            <p>Math Teacher</p>
-                            <ul class="probootstrap-footer-social">
-                                <li class="twitter"><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li class="facebook"><a href="#"><i class="icon-facebook2"></i></a></li>
-                                <li class="instagram"><a href="#"><i class="icon-instagram2"></i></a></li>
-                                <li class="google-plus"><a href="#"><i class="icon-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="probootstrap-teacher text-center probootstrap-animate">
-                        <figure class="media">
-                            <img src="img/person_7.jpg" alt="Free Bootstrap Template by ProBootstrap.com"
-                                class="img-responsive">
-                        </figure>
-                        <div class="text">
-                            <h3>Jessa Sy</h3>
-                            <p>Physics Teacher</p>
-                            <ul class="probootstrap-footer-social">
-                                <li class="twitter"><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li class="facebook"><a href="#"><i class="icon-facebook2"></i></a></li>
-                                <li class="instagram"><a href="#"><i class="icon-instagram2"></i></a></li>
-                                <li class="google-plus"><a href="#"><i class="icon-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <section class="probootstrap-section probootstrap-bg probootstrap-section-colored probootstrap-testimonial"
-        style="background-image: url(img/slider_4.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
-                    <h2>Reviews của học sinh</h2>
-                    <p class="lead">Những học sinh đã từng học nói gì về trung tâm</p>
-                </div>
-            </div>
-            <!-- END row -->
-            <div class="row">
-                <div class="col-md-12 probootstrap-animate">
-                    <div class="owl-carousel owl-carousel-testimony owl-carousel-fullwidth">
-                        <div class="item">
-
-                            <div class="probootstrap-testimony-wrap text-center">
-                                <figure>
-                                    <img src="img/person_1.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
-                                </figure>
-                                <blockquote class="quote">&ldquo;Design must be functional and functionality must be
-                                    translated into visual aesthetics, without any reliance on gimmicks that have to be
-                                    explained.&rdquo; <cite class="author"> &mdash; <span>Mike Fisher</span></cite>
-                                </blockquote>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="probootstrap-testimony-wrap text-center">
-                                <figure>
-                                    <img src="img/person_1.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
-                                </figure>
-                                <blockquote class="quote">&ldquo;Design must be functional and functionality must be
-                                    translated into visual aesthetics, without any reliance on gimmicks that have to be
-                                    explained.&rdquo; <cite class="author"> &mdash; <span>Mike Fisher</span></cite>
-                                </blockquote>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="probootstrap-testimony-wrap text-center">
-                                <figure>
-                                    <img src="img/person_1.jpg" alt="Free Bootstrap Template by ProBootstrap.com">
-                                </figure>
-                                <blockquote class="quote">&ldquo;Design must be functional and functionality must be
-                                    translated into visual aesthetics, without any reliance on gimmicks that have to be
-                                    explained.&rdquo; <cite class="author"> &mdash; <span>Mike Fisher</span></cite>
-                                </blockquote>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- END row -->
-        </div>
-    </section>
-
     <section class="probootstrap-section">
         <div class="container">
             <div class="row">
@@ -530,6 +161,133 @@
                 </div>
             </div>
             <!-- END row -->
+        </div>
+    </section>
+    <section class="probootstrap-section probootstrap-bg probootstrap-section-colored probootstrap-testimonial"
+        style="background-image: url(img/slider_4.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+                    <h2>Gặp gỡ đội ngũ giáo viên chất lượng</h2>
+                    <p class="lead">Đội ngũ giáo viên được tuyển chọn và rèn luyện kĩ càng, nhằm đem đến chất lượng tốt
+                        nhất cho trung tâm</p>
+                </div>
+            </div>
+            <!-- END row -->
+            <div class="row">
+                <div class="col-md-12 probootstrap-animate">
+                    <div class="owl-carousel owl-carousel-testimony owl-carousel-fullwidth">
+                        @foreach ($teachers as $teacher)
+                            <div class="item">
+                                <div class="probootstrap-testimony-wrap text-center">
+                                    <figure>
+                                        <img src="{{ asset('storage/avatar/' . $teacher->avatar) }}" alt="giáo viên">
+                                    </figure>
+                                    <blockquote class="quote">
+                                        &ldquo;{{ $teacher->about }}.&rdquo;
+                                        <ul class="probootstrap-footer-social" style="margin-top: 20px">
+                                            <li class="twitter"><a href="#"><i class="icon-twitter"></i></a></li>
+                                            <li class="facebook"><a href="#"><i class="icon-facebook2"></i></a></li>
+                                            <li class="instagram"><a href="#"><i class="icon-instagram2"></i></a></li>
+                                            <li class="google-plus"><a href="#"><i class="icon-google-plus"></i></a>
+                                            </li>
+                                        </ul> <cite class="author"> &mdash; <span>{{ $teacher->firstname ?? 'Firstname' }}
+                                                {{ $teacher->lastname ?? 'Lastname' }}</span></cite>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <!-- END row -->
+        </div>
+    </section>
+
+    <section class="probootstrap-section probootstrap-bg-white probootstrap-border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+                    <h2>Một vài blog nổi bật</h2>
+                    <p class="lead">Phía dưới là một vài blog nổi bật</p>
+                </div>
+            </div>
+            <!-- END row -->
+            <div class="row">
+                @foreach ($posts as $post)
+                    <div class="col-md-6">
+                        <div class="probootstrap-service-2 probootstrap-animate">
+                            <div class="text" style="width: 100%">
+                                <span class="probootstrap-meta"><i class="icon-calendar2"></i>
+                                    {{ $post->postTime }}</span>
+                                <h3 class="overflow">{!! $post->title !!}</h3>
+                                <p style="margin: 20px 0"><a href="{{ route('blog.show', [$post->id]) }}"
+                                        class="btn btn-primary">Xem thêm</a> <span
+                                        class="enrolled-count">{{ DB::table('post_hearts')->where('post_id', $post->id)->count() }}
+                                        người thích bài viết này</span></p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p><a href="{{ route('blog.index') }}" class="btn btn-primary">Xem tất cả bài viết</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section
+        class="probootstrap-section probootstrap-section-colored probootstrap-bg probootstrap-custom-heading probootstrap-tab-section"
+        style="background-image: url(img/slider_2.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center section-heading probootstrap-animate">
+                    <h2 class="mb0">Tin tức nổi bật</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="probootstrap-section probootstrap-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div id="featured-news" class="tab-pane fade in active">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="owl-carousel" id="owl1">
+                                        @foreach ($news as $new)
+                                            <div class="item" style="margin-bottom: 25px">
+                                                <a href="{{ route('news.show', [$new->id]) }}"
+                                                    class="probootstrap-featured-news-box">
+                                                    <div class="probootstrap-text" style="top:0; bottom: 20px">
+                                                        <h3 class="overflow">{{ $new->title }}</h3>
+                                                        <p class="overflow">{{ $new->content }}
+                                                        </p>
+                                                        <span class="probootstrap-date"><i
+                                                                class="icon-calendar"></i>{{ $new->postTime }}</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                        <!-- END item -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END row -->
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <p><a href="{{ route('news.index') }}" class="btn btn-primary">Xem tất cả tin tức
+                                            mới</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection

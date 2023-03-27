@@ -30,21 +30,28 @@ class NewsController extends Controller
     {
         $query = News::query()->with('user');
 
+        if ($request->has('q')) {
+            $q = trim($request->input('q'));
+            $query->where(function ($query) use ($q) {
+                $query->where('title', 'LIKE', "%" . $q . "%");
+            });
+        }
+
         $news = $query->latest()->paginate(9);
 
-        return view('pages.news.index', compact('news'));
+        return view('pages.news-management.index', compact('news'));
     }
 
     public function create()
     {
-        return view('pages.news.create');
+        return view('pages.news-management.create');
     }
 
     public function store(CreateNewsRequest $request)
     {
         $content = $request->content;
         $dom = new \DomDocument();
-        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $dom->loadHtml('<?xml encoding="utf-8" ?>' . $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $imageFile = $dom->getElementsByTagName('img');
 
         foreach ($imageFile as $item => $image) {
@@ -74,7 +81,7 @@ class NewsController extends Controller
     public function edit(News $new)
     {
         $this->authorize('update', $new);
-        return view('pages.news.edit', compact('new'));
+        return view('pages.news-management.edit', compact('new'));
     }
 
     public function update(UpdateNewsRequest $request, News $new)
@@ -83,7 +90,7 @@ class NewsController extends Controller
         $content = $request->content;
         libxml_use_internal_errors(true);
         $dom = new \DomDocument();
-        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
+        $dom->loadHtml('<?xml encoding="utf-8" ?>' . $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
         $imageFile = $dom->getElementsByTagName('img');
 
         foreach ($imageFile as $item => $image) {
@@ -121,7 +128,7 @@ class NewsController extends Controller
     public function deleteNew()
     {
         $news = News::onlyTrashed()->with('user')->latest()->paginate(9);
-        return view('pages.news.delete-news', compact('news'));
+        return view('pages.news-management.delete-news', compact('news'));
     }
 
     public function restore($new)

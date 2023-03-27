@@ -77,6 +77,7 @@ class UserController extends Controller
     {
         $input = $request->except('password_confirmation');
         $input['password'] = $request->password;
+        $input['avatar'] = $request->avatar;
         $avatar = $request->avatar;
 
         if ($input['avatar'] == null) {
@@ -98,6 +99,8 @@ class UserController extends Controller
         }
 
         $user = User::create($input);
+
+        
 
         return back()->with('succes', 'Tạo mới người dùng thành công');
     }
@@ -185,8 +188,9 @@ class UserController extends Controller
 
     public function forceDelete($user)
     {
-        if ($user->avatar != "default-avatar.png") {
-            Storage::disk('public')->delete("avatar/" . $user->avatar);
+        $get_user = User::onlyTrashed()->where('id', $user)->first();
+        if (optional($get_user)->avatar != "default-avatar.png") {
+            Storage::disk('public')->delete("avatar/" . $get_user->avatar);
         }
         User::onlyTrashed()->where('id', $user)->forceDelete();
         return back()->with('succes', 'Người dùng trên đã bị xóa hoàn toàn khỏi hệ thống');

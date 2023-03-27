@@ -94,7 +94,10 @@
                                                     </td>
                                                     <td>
                                                         <p class="text-xs font-weight-bold mb-0">{{ $user->gender }}</p>
-                                                        <p class="text-xs text-secondary mb-0">{{ $user->dobFormat }}</p>
+                                                        @if ($user->dobFormat != now()->day . '-' . now()->format('m') . '-' . now()->year)
+                                                            <p class="text-xs text-secondary mb-0">
+                                                                {{ $user->dobFormat }}</p>
+                                                        @endif
                                                     </td>
                                                     <td class="align-middle">
                                                         @if (Auth::user()->id == $user->id)
@@ -111,7 +114,7 @@
                                                             tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog">
-                                                                <div class="modal-content">
+                                                                <div class="modal-content" style="width:150%">
                                                                     <div class="modal-header">
                                                                         <h1 class="modal-title fs-5 d-flex p-2"
                                                                             id="exampleModalLabel">

@@ -45,7 +45,33 @@
             <div class="col-md-12">
                 <h2 class="probootstrap-animate" data-animate-effect="fadeInRight">Vậy còn chần chờ gì nữa</h2>
                 <button href="#" role="button" class="btn btn-primary btn-lg btn-ghost probootstrap-animate lac"
-                    data-animate-effect="fadeInLeft">Đăng ký học ngay</button>
+                    data-animate-effect="fadeInLeft" class="dropdown-item" data-toggle="modal" data-target="#signUpModal"
+                    class="tt-icon-btn" style="cursor: pointer">Đăng ký học ngay</button>
+                <div class="modal fade" id="signUpModal" tabindex="-2" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width:150%">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                    Đăng ký học</h1>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <h3>Quý phụ huynh học sinh muốn đăng ký học vui lòng liên hệ với thầy giáo Hiếu để
+                                        được tư vấn kĩ càng hơn và kiểm tra trình độ qua:</h3>
+                                    <p><b>Số điện thoại hoặc Zalo:</b> 0942225766</p>
+                                    <p><b>Qua email:</b> letrunghieu2001@gmail.com <b>hoặc</b>
+                                        trungtamdayhoalth@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -72,13 +98,38 @@
                 <div class="probootstrap-footer-widget">
                     <h3>Links</h3>
                     <ul>
-                        <li><a href="{{ route('home') }}">Trang Chủ</a></li>
-                        <li><a href="events.html">Giới thiệu</a></li>
-                        <li><a href="teachers.html">Đội ngũ giáo viên</a></li>
-                        <li><a href="teachers.html">Tin tức</a></li>
-                        <li><a href="teachers.html">Bảng thành tích</a></li>
-                        <li><a href="events.html">Đăng kí học</a></li>
-                        <li><a href="courses.html">Blog</a></li>
+                        <li class="active"><a href="{{ route('home') }}">Trang Chủ</a></li>
+                        <li> <a class="dropdown-item" data-toggle="modal" data-target="#signUpModal" class="tt-icon-btn"
+                                style="cursor: pointer"> Đăng kí học </a></li>
+                        <div class="modal fade" id="signUpModal" tabindex="-2" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width:150%">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                            Đăng ký học</h1>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <h3>Quý phụ huynh học sinh muốn đăng ký học vui lòng liên hệ với thầy giáo
+                                                Hiếu để được tư vấn kĩ càng hơn và kiểm tra trình độ qua:</h3>
+                                            <p><b>Số điện thoại hoặc Zalo:</b> 0942225766</p>
+                                            <p><b>Qua email:</b> letrunghieu2001@gmail.com <b>hoặc</b>
+                                                trungtamdayhoalth@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <li><a href="{{ route('home.periodic-table') }}">Bảng tuần hoàn</a></li>
+                        <li><a href="{{ route('news.index') }}">Tin tức</a></li>
+                        <li><a href="{{ route('blog.index') }}">Blog</a></li>
                     </ul>
                 </div>
             </div>
@@ -107,7 +158,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 text-left">
-                    <p>&copy; 2023 <a href="{{ route('home') }}">LTH Chemistry</a>. Thiết kế và &amp; phát triển with <i
+                    <p>&copy; {{ now()->year }} <a href="{{ route('home') }}">LTH Chemistry</a>. Thiết kế và &amp; phát triển with <i
                             class="icon icon-heart"></i> bởi <a href="{{ route('home') }}">TrungHieuLe</a></p>
                 </div>
                 <div class="col-md-4 probootstrap-back-to-top">

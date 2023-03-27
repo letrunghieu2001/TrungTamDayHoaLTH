@@ -155,7 +155,7 @@
                                             <div class="modal fade" id="updateCommentModal-{{ $comment->id }}" tabindex="-2"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
-                                                    <div class="modal-content">
+                                                    <div class="modal-content" style="width:150%">
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">
                                                                 Sửa comment</h1>
@@ -190,7 +190,7 @@
                                             <div class="modal fade" id="deleteCommentModal-{{ $comment->id }}"
                                                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
-                                                    <div class="modal-content">
+                                                    <div class="modal-content" style="width:150%">
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5 d-flex p-2" id="exampleModalLabel">
                                                                 Xóa comment</h1>
@@ -219,7 +219,7 @@
                                             <div class="modal fade" id="reportCommentModal-{{ $comment->id }}"
                                                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
-                                                    <div class="modal-content">
+                                                    <div class="modal-content" style="width:150%">
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5 d-flex p-2" id="exampleModalLabel">
                                                                 Báo cáo comment</h1>

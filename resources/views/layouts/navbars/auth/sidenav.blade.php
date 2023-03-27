@@ -73,21 +73,166 @@
                     </a>
                 </li>
             @endif
+            @if (Auth::user()->role_id == 1)
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Quản lý trang chủ</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'news-management') == true ? 'active' : '' }}"
+                        href="{{ route('news.management') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-newspaper text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý tin tức</span>
+                    </a>
+                </li>
+            @endif
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Quản lý trang chủ</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Quản lý lớp học</h6>
             </li>
             @if (Auth::user()->role_id == 1)
-            <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'news-management') == true ? 'active' : '' }}"
-                    href="{{ route('news.management') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-newspaper text-dark text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Quản lý tin tức</span>
-                </a>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'class-management') == true ? 'active' : '' }}"
+                        href="{{ route('class.management') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-book-open text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý lớp học</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'calendar-management') == true ? 'active' : '' }}"
+                        href="{{ route('calendar.management') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-calendar text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý lịch học</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'class-management') == true ? 'active' : '' }}"
+                        href="{{ route('class.management') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-book-open text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Danh sách lớp học</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'calendar-management') == true ? 'active' : '' }}"
+                        href="{{ route('calendar.management') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-calendar text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Thời khóa biểu</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role_id == 3)
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'my-grade') == true ? 'active' : '' }}"
+                        href="{{ route('grade.my-grade') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-chalkboard text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Bảng điểm</span>
+                    </a>
+                </li>
+            @endif
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Quản lý tài chính</h6>
             </li>
-        @endif
+            @if (Auth::user()->role_id == 1)
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'payment-management/student') == true ? 'active' : '' }}"
+                        href="{{ route('payment.management-student') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-money-check-dollar text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý tài chính học sinh</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'payment-management/teacher') == true ? 'active' : '' }}"
+                        href="{{ route('payment.management-teacher') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-chalkboard-user text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý tài chính giáo viên</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'payment-management/admin') == true ? 'active' : '' }}"
+                        href="{{ route('payment.management-admin') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-file-invoice-dollar text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý tài chính trung tâm</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role_id == 2)
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'payment-management') == true ? 'active' : '' }}"
+                        href="{{ route('payment.show-teacher', [Auth::user()->id]) }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-file-invoice-dollar text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý tài chính</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role_id == 3)
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'payment-management') == true ? 'active' : '' }}"
+                        href="{{ route('payment.show-student', [Auth::user()->id]) }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-file-invoice-dollar text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý tài chính</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 3)
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'billing') == true ? 'active' : '' }}"
+                        href="{{ route('payment.billing') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-coins text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Nộp tiền học</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role_id == 1)
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Quản lý đề thi</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'exam-management') == true ? 'active' : '' }}"
+                        href="{{ route('exam.management') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-clipboard-question text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý đề thi</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
 </aside>

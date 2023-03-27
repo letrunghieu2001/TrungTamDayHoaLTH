@@ -14,4 +14,15 @@ class Lesson extends Model
     protected $dates = ['deleted_at'];
 
     protected $table = 'lessons';
+
+    public function lesson_details()
+    {
+        return $this->hasMany(LessonDetail::class);
+    }
+    
+    public function exams()
+    {
+        return $this->belongsToMany(Exam::class, 'lesson_exams', 'lesson_id', 'exam_id');
+    }
+
 }

@@ -36,7 +36,7 @@
                     <span><a href={{ route('myprofile') }}
                             style="color: white" class="d-sm-inline d-none">{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} - {{ Auth::user()->unique_id }}</a></span>
                 </li>
-                <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                {{-- <li class="nav-item dropdown pe-2 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-bell cursor-pointer"></i>
@@ -118,7 +118,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

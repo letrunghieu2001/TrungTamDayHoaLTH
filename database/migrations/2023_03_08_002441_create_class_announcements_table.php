@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('class_announcements', function (Blueprint $table) {
             $table->id();
-            $table->string('money');
-            $table->string('month');
-            $table->boolean('status');
+            $table->longText('content');
+            
+            $table->foreignID('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignID('class_id')->constrained('classes')->cascadeOnDelete();
             $table->timestamps();
-
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('payment_method_id')->constrained('payment_methods')->cascadeOnDelete();
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('class_announcements');
     }
 };
