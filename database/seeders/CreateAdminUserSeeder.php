@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,10 +18,10 @@ class CreateAdminUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'firstname' => 'Le',
-            'lastname' => 'Trung Hieu',
+            'firstname' => 'Lê',
+            'lastname' => 'Trung Hiếu',
             'email' => 'letrunghieu2001@gmail.com',
-            'password' => bcrypt('12345678'),
+            'password' => '12345678',
             'role_id' => config('constants.role.admin'),
             'gender' => 'Nam',
             'phone' => '0942225766',
@@ -28,7 +29,8 @@ class CreateAdminUserSeeder extends Seeder
             'bank' => 'VIB',
             'credit_number' => '048704060117045',
             'avatar' => 'default-avatar.png',
-            'created_at' => Carbon::now()
+            'created_at' => Carbon::now(),
+            'unique_id' => 'AD220001'
         ]);
     }
 }

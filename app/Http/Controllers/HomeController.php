@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChemistryClass;
+use App\Models\News;
+use App\Models\Post;
+use App\Models\StudentsInClass;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-        /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -23,6 +30,36 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard');
+        $news = News::latest()->limit(9)->get();
+        $posts = Post::join('post_hearts', 'posts.id', '=', 'post_hearts.post_id')->select('posts.*', DB::raw('count(post_hearts.id) as total_hearts'))
+            ->groupBy('posts.id')
+            ->orderByDesc('total_hearts')
+            ->limit(4)
+            ->get();
+        $teachers = User::where('role_id', 2)->inRandomOrder()->get();
+        return view('home.index', compact('news', 'posts', 'teachers'));
+    }
+
+    public function dashboard()
+    {
+        $classes = ChemistryClass::all();
+        $salary[0] = 0;
+        foreach ($classes as $class) {
+            $countStudent = StudentsInClass::where('class_id', $class->id)->count();
+            if (Auth::user()->role_id == 1) {
+                $salary[$class->id] = $class->price_per_student * $countStudent * 60 / 100;
+            };
+            if (Auth::user()->role_id == 2) {
+                $salary[$class->id] = $class->price_per_student * $countStudent * 40 / 100;
+            };
+        }
+
+        $money = array_sum($salary);
+        return view('pages.dashboard', compact('money'));
+    }
+
+    public function periodicTable()
+    {
+        return view('home.periodic-table.index');
     }
 }

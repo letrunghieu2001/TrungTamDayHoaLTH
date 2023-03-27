@@ -17,9 +17,9 @@ class CreateRoleSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            ['id' => config('constants.role.admin'), 'name' => 'Admin', 'created_at' => Carbon::now()],
-            ['id' => config('constants.role.teacher'), 'name' => 'Teacher', 'created_at' => Carbon::now()],
-            ['id' => config('constants.role.student'), 'name' => 'Student', 'created_at' => Carbon::now()],
+            ['id' => config('constants.role.admin'), 'name' => 'Quản trị viên', 'created_at' => Carbon::now()],
+            ['id' => config('constants.role.teacher'), 'name' => 'Giáo viên', 'created_at' => Carbon::now()],
+            ['id' => config('constants.role.student'), 'name' => 'Học sinh', 'created_at' => Carbon::now()],
         ]);
     }
 }
