@@ -46,12 +46,12 @@ class ForgotPassword extends Notification
     {
         $url = URL::temporarySignedRoute('change-password', now()->addHours(12) ,['id' => $this->token]);
         return (new MailMessage)
-                    ->line('Hi!')
-                    ->subject('Reset Password')
-                    ->line('You are receiving this email so you can reset the password for your account')
-                    ->action('Reset Password', $url )
-                    ->line("If you didn't request this, please ignore this email.")
-                    ->line('Thank you!');
+                    ->line('Xin chào!')
+                    ->subject('Cấp lại mật khẩu')
+                    ->line('Bạn nhận được email này vì bạn đã yêu cầu trung tâm LTH Chemistry cấp lại mật khẩu cho mình')
+                    ->action('Cấp lại mật khẩu', $url )
+                    ->line("Nếu bạn không yêu cầu cấp, hãy bỏ qua tin nhắn này.")
+                    ->line('Xin cảm ơn!');
     }
 
     /**
