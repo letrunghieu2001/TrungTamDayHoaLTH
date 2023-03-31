@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('report_comments', function (Blueprint $table) {
-            $table->foreignID('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignID('user_created_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignID('user_comment_id')->constrained('users')->cascadeOnDelete();
         });
     }
 
@@ -26,7 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('report_comments', function (Blueprint $table) {
-            $table->dropColumn('user_id');
+            $table->foreignID('user_created_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignID('user_comment_id')->constrained('users')->cascadeOnDelete();
         });
     }
 };

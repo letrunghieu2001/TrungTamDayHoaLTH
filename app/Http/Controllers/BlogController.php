@@ -45,7 +45,7 @@ class BlogController extends Controller
                     $isCommentHeart = null;
                     $countCommentHeart[$comment->id] =  $comment->hearts()->count();
                 } else {
-                    $isCommentReported[$comment->id] = DB::table('report_comments')->where('user_id', Auth::user()->id)->where('comment_id', $comment->id)->first();
+                    $isCommentReported[$comment->id] = DB::table('report_comments')->where('user_created_id', Auth::user()->id)->where('comment_id', $comment->id)->first();
                     $isCommentHeart[$comment->id] = $comment->hearts()->where('user_id', Auth::user()->id)->first();
                     $countCommentHeart[$comment->id] =  $comment->hearts()->count();
                 }

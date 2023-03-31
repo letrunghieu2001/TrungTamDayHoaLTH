@@ -72,6 +72,16 @@
                         <span class="nav-link-text ms-1">Quản lý blog</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'reportcomment') == true ? 'active' : '' }}"
+                        href="{{ route('report-comment.index') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-comment-slash text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Quản lý bình luận</span>
+                    </a>
+                </li>
             @endif
             @if (Auth::user()->role_id == 1)
                 <li class="nav-item mt-3">
@@ -144,6 +154,18 @@
                             <i class="fa-solid fa-chalkboard text-dark text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Bảng điểm</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role_id == 1)
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'grade') == true ? 'active' : '' }}"
+                        href="{{ route('grade.index') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-chalkboard text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Danh sách bảng điểm</span>
                     </a>
                 </li>
             @endif

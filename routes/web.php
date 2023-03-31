@@ -135,6 +135,7 @@ Route::controller(CommentController::class)->name('comment.')->middleware(['auth
 Route::controller(ReportCommentController::class)->name('report-comment.')->middleware(['auth'])->group(function () {
 	Route::middleware(['admin'])->group(function () {
 		Route::get('/reportcomment/index', 'index')->name('index');
+		Route::delete('/reportcomment/delete/{reportcomment}', 'destroy')->name('delete');
 	});
 	Route::post('/reportcomment/{comment}/store', 'store')->name('store');
 });
@@ -262,6 +263,10 @@ Route::controller(ExamController::class)->name('exam.')->group(function () {
 Route::controller(GradeController::class)->name('grade.')->group(function () {
 	Route::middleware(['auth'])->group(function () {
 		Route::post('/grade-management/store-grade/{exam}/{user}/{lesson}', 'storeGrade')->name('store-grade');
+	});
+	Route::middleware(['auth','admin'])->group(function () {
+		Route::get('/grade-management/index', 'index')->name('index');
+		Route::get('/grade-management/show/{user}', 'show')->name('show');
 	});
 	Route::middleware(['auth'])->withoutMiddleware(['teacher'])->group(function () {
 		Route::get('/grade-management/my-grade', 'myGrade')->name('my-grade');
