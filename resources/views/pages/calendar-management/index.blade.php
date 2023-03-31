@@ -17,58 +17,64 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-                    var calendarEl = document.getElementById('calendar');
-                    var calendar = new FullCalendar.Calendar(calendarEl, {
-                            initialView: 'dayGridWeek',
-                            headerToolbar: {
-                                left: 'prev,next',
-                                center: 'title',
-                                right: 'dayGridWeek,dayGridDay' // user can switch between the two
-                            },
-                            locale: 'vie',
-                            events: [
-                                @if (Auth::user()->role_id == 1)
-                                    @foreach ($calendars as $calendar)
-                                        @foreach ($calendar->classes as $class)
-                                            {
-                                                title: "{{ $class->name }}",
-                                                daysOfWeek: [{{ $calendar->day_of_the_week }}],
-                                                startTime: "{{ $calendar->start_hour }}",
-                                                endTime: "{{ $calendar->end_hour }}",
-                                            },
-                                        @endforeach
-                                    @endforeach
-                                @elseif (Auth::user()->role_id == 2)
-                                    @foreach ($calendars as $calendar)
-                                        @foreach ($calendar->classes as $class)
-                                            @if (Auth::user()->id == $class->teacher_id)
-                                                {
-                                                    title: "{{ $class->name }}",
-                                                    daysOfWeek: [{{ $calendar->day_of_the_week }}],
-                                                    startTime: "{{ $calendar->start_hour }}",
-                                                    endTime: "{{ $calendar->end_hour }}",
-                                                },
-                                            @endif
-                                        @endforeach
-                                    @endforeach
-                                @elseif (Auth::user()->role_id == 3)
-                                    @foreach ($calendars as $calendar)
-                                        @foreach ($calendar->classes as $class)
-                                                @if (App\Models\StudentsInClass::where('class_id', $class->id)->where('student_id', Auth::user()->id)->exists())
-                                                    {
-                                                        title: "{{ $class->name }}",
-                                                        daysOfWeek: [{{ $calendar->day_of_the_week }}],
-                                                        startTime: "{{ $calendar->start_hour }}",
-                                                        endTime: "{{ $calendar->end_hour }}",
-                                                    },
-                                                @endif
-                                            @endforeach
-                                        @endforeach
-                                    @endif
-                                ]
-                            }); calendar.render();
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridWeek',
+                headerToolbar: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'dayGridWeek,dayGridDay' // user can switch between the two
+                },
+                locale: 'vie',
+                events: [
+                    @if (Auth::user()->role_id == 1)
+                        @foreach ($calendars as $calendar)
+                            @foreach ($calendar->classes as $class)
+                                <?php $teacher = App\Models\User::join('classes', 'classes.teacher_id', '=', 'users.id')
+                                    ->where('classes.id', $class->id)
+                                    ->select('users.firstname as firstname', 'users.lastname as lastname')
+                                    ->first();
+                                $teacher_name = $teacher->firstname . ' ' . $teacher->lastname
+                                ?> {
+                                    title: "{{ $class->name . ' - GV: ' . $teacher_name }}",
+                                    daysOfWeek: [{{ $calendar->day_of_the_week }}],
+                                    startTime: "{{ $calendar->start_hour }}",
+                                    endTime: "{{ $calendar->end_hour }}",
+                                },
+                            @endforeach
+                        @endforeach
+                    @elseif (Auth::user()->role_id == 2)
+                        @foreach ($calendars as $calendar)
+                            @foreach ($calendar->classes as $class)
+                                @if (Auth::user()->id == $class->teacher_id)
+                                    {
+                                        title: "{{ $class->name }}",
+                                        daysOfWeek: [{{ $calendar->day_of_the_week }}],
+                                        startTime: "{{ $calendar->start_hour }}",
+                                        endTime: "{{ $calendar->end_hour }}",
+                                    },
+                                @endif
+                            @endforeach
+                        @endforeach
+                    @elseif (Auth::user()->role_id == 3)
+                        @foreach ($calendars as $calendar)
+                            @foreach ($calendar->classes as $class)
+                                @if (App\Models\StudentsInClass::where('class_id', $class->id)->where('student_id', Auth::user()->id)->exists())
+                                    {
+                                        title: "{{ $class->name }}",
+                                        daysOfWeek: [{{ $calendar->day_of_the_week }}],
+                                        startTime: "{{ $calendar->start_hour }}",
+                                        endTime: "{{ $calendar->end_hour }}",
+                                    },
+                                @endif
+                            @endforeach
+                        @endforeach
+                    @endif
+                ]
+            });
+            calendar.render();
 
-                    });
+        });
     </script>
     <div class="row mt-4 mx-4">
         <div id="alert">

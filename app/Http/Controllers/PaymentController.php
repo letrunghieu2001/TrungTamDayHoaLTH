@@ -7,6 +7,7 @@ use App\Models\Attendance;
 use App\Models\ChemistryClass;
 use App\Models\StudentPayment;
 use App\Models\StudentsInClass;
+use App\Models\TeacherAttendance;
 use App\Models\TeacherPayment;
 use App\Models\User;
 use Carbon\Carbon;
@@ -54,7 +55,12 @@ class PaymentController extends Controller
                     $current_year++;
                 }
             }
-            $lessons = DB::table('lessons')->join('classes', 'lessons.class_id', '=', 'classes.id')->join('class_students', 'classes.id', '=', 'class_students.class_id')->where('class_students.student_id', $user->id)->select('*', 'classes.name AS class_name', 'lessons.name AS lesson_name', 'classes.id AS class_id', 'lessons.id AS lesson_id')->get();
+            $lessons = DB::table('lessons')
+                ->join('classes', 'lessons.class_id', '=', 'classes.id')
+                ->join('class_students', 'classes.id', '=', 'class_students.class_id')
+                ->where('class_students.student_id', $user->id)
+                ->select('*', 'classes.name AS class_name', 'lessons.name AS lesson_name', 'classes.id AS class_id', 'lessons.id AS lesson_id', 'lessons.created_at AS lesson_created_at')
+                ->get();
             foreach ($dates as $date) {
                 $money = 0;
                 foreach ($lessons as $lesson) {
@@ -105,7 +111,12 @@ class PaymentController extends Controller
             }
         }
 
-        $lessons = DB::table('lessons')->join('classes', 'lessons.class_id', '=', 'classes.id')->join('class_students', 'classes.id', '=', 'class_students.class_id')->where('class_students.student_id', $user->id)->select('*', 'classes.name AS class_name', 'lessons.name AS lesson_name', 'classes.id AS class_id', 'lessons.id AS lesson_id')->get();
+        $lessons = DB::table('lessons')
+            ->join('classes', 'lessons.class_id', '=', 'classes.id')
+            ->join('class_students', 'classes.id', '=', 'class_students.class_id')
+            ->where('class_students.student_id', $user->id)
+            ->select('*', 'classes.name AS class_name', 'lessons.name AS lesson_name', 'classes.id AS class_id', 'lessons.id AS lesson_id', 'lessons.created_at AS lesson_created_at')
+            ->get();
 
         return view('pages.payment-management.show-student', compact('user', 'lessons', 'dates'));
     }
@@ -166,13 +177,28 @@ class PaymentController extends Controller
                 }
             }
 
-            $lessons = DB::table('lessons')->join('classes', 'lessons.class_id', '=', 'classes.id')->where('classes.teacher_id', $user->id)->select('*', 'classes.name AS class_name', 'lessons.name AS lesson_name', 'classes.id AS class_id', 'lessons.id AS lesson_id')->get();
+            $lessons = DB::table('lessons')
+                ->join('classes', 'lessons.class_id', '=', 'classes.id')
+                ->where('classes.teacher_id', $user->id)
+                ->select('*', 'classes.name AS class_name', 'lessons.name AS lesson_name', 'classes.id AS class_id', 'lessons.id AS lesson_id', 'lessons.created_at AS lesson_created_at')
+                ->get();
 
             foreach ($dates as $date) {
                 $money = 0;
                 foreach ($lessons as $lesson) {
-                    if (Carbon::parse($lesson->created_at)->month == explode('/', $date)[0]) {
-                        $money += $lesson->price_per_student * 60 / 100;
+                    if (Carbon::parse($lesson->lesson_created_at)->month == explode('/', $date)[0]) {
+                        if (
+                            TeacherAttendance::where('lesson_id', $lesson->lesson_id)->where('teacher_id', $user->id)->where('status', 2)->exists() ||
+                            !TeacherAttendance::where('lesson_id', $lesson->lesson_id)->where('teacher_id', $user->id)->exists()
+                        ) {
+                            $money += 0;
+                        } else {
+                            $item = TeacherAttendance::where('lesson_id', $lesson->lesson_id)
+                                ->where('teacher_id', $user->id)
+                                ->first();
+                            $penalty_money = $item->penalty_money;
+                            $money += $lesson->price_per_student * 60 / 100 + $penalty_money;
+                        }
                     };
                 }
                 if (!TeacherPayment::where('teacher_id', $user->id)->where('date', $date)->exists()) {
@@ -218,7 +244,11 @@ class PaymentController extends Controller
             }
         }
 
-        $lessons = DB::table('lessons')->join('classes', 'lessons.class_id', '=', 'classes.id')->where('classes.teacher_id', $user->id)->select('*', 'classes.name AS class_name', 'lessons.name AS lesson_name', 'classes.id AS class_id', 'lessons.id AS lesson_id')->get();
+        $lessons = DB::table('lessons')
+            ->join('classes', 'lessons.class_id', '=', 'classes.id')
+            ->where('classes.teacher_id', $user->id)
+            ->select('*', 'classes.name AS class_name', 'lessons.name AS lesson_name', 'classes.id AS class_id', 'lessons.id AS lesson_id', 'lessons.created_at AS lesson_created_at')
+            ->get();
 
         return view('pages.payment-management.show-teacher', compact('user', 'lessons', 'dates'));
     }
@@ -359,13 +389,13 @@ class PaymentController extends Controller
     public function destroy(AdminPayment $payment)
     {
         $payment->delete();
-        return back()->with('succes', 'Bài viết trên đã bị ẩn');
+        return back()->with('succes', 'Đã xóa');
     }
 
     public function generatePdfAdmin($dateMonth, $dateYear, Request $request)
     {
-        $date = $dateMonth.'/'.$dateYear;
-        $payments = AdminPayment::where('date', $dateMonth.'/'.$dateYear)->get();
+        $date = $dateMonth . '/' . $dateYear;
+        $payments = AdminPayment::where('date', $dateMonth . '/' . $dateYear)->get();
 
         return view('pages.payment-management.admin-generate-pdf', compact('date', 'payments'));
     }
@@ -374,5 +404,4 @@ class PaymentController extends Controller
     {
         return view('pages.payment-management.billing');
     }
-
 }

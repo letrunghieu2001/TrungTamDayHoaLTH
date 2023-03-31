@@ -47,7 +47,7 @@
                                                 </td>
                                             </tr>
                                             @foreach ($lessons as $lesson)
-                                                @if (\Carbon\Carbon::parse($lesson->created_at)->month == explode('/', $date)[0])
+                                                @if (\Carbon\Carbon::parse($lesson->lesson_created_at)->month == explode('/', $date)[0])
                                                     <tr>
                                                         <td>
                                                             {{ $lesson->class_name }}
@@ -56,11 +56,22 @@
                                                             {{ $lesson->lesson_name }}
                                                         </td>
                                                         <td class="price-{{ $date }}">
-                                                            {{ number_format(($lesson->price_per_student * 60) / 100) }}
+                                                            @if (App\Models\TeacherAttendance::where('lesson_id', $lesson->lesson_id)->where('teacher_id', $user->id)->where('status', 2)->exists() ||
+                                                                    !App\Models\TeacherAttendance::where('lesson_id', $lesson->lesson_id)->where('teacher_id', $user->id)->exists())
+                                                                0
+                                                            @else
+                                                                @php
+                                                                    $money = App\Models\TeacherAttendance::where('lesson_id', $lesson->lesson_id)
+                                                                        ->where('teacher_id', $user->id)
+                                                                        ->first();
+                                                                    $penalty_money = $money->penalty_money;
+                                                                @endphp
+                                                                {{ number_format(($lesson->price_per_student * 60) / 100 + $penalty_money) }}
+                                                                @php
+                                                                    $total_price += ($lesson->price_per_student * 60) / 100 + $penalty_money;
+                                                                @endphp
+                                                            @endif
                                                         </td>
-                                                        @php
-                                                            $total_price += ($lesson->price_per_student * 60) / 100;
-                                                        @endphp
                                                         <td>
                                                         </td>
                                                     </tr>

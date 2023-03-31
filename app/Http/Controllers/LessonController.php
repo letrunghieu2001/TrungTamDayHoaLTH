@@ -7,6 +7,7 @@ use App\Models\Exam;
 use App\Models\ExamInLesson;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LessonController extends Controller
 {
@@ -37,5 +38,17 @@ class LessonController extends Controller
     {
         ExamInLesson::where('lesson_id', $lesson->id)->where('exam_id', $exam->id)->delete();
         return back()->with('succes', 'Xóa thành công');
+    }
+
+    public function update(Request $request,Lesson $lesson)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
+        DB::table('lessons')->where('id', $lesson->id)->update([
+            'name' => $request->name
+        ]);
+
+        return back()->with('succes', 'Sửa thành công');
     }
 }

@@ -47,7 +47,7 @@
                                                 </td>
                                             </tr>
                                             @foreach ($lessons as $lesson)
-                                                @if (\Carbon\Carbon::parse($lesson->created_at)->month == explode('/', $date)[0])
+                                                @if (\Carbon\Carbon::parse($lesson->lesson_created_at)->month == explode('/', $date)[0])
                                                     <tr>
                                                         <td>
                                                             {{ $lesson->class_name }}

@@ -43,8 +43,10 @@ use App\Http\Controllers\MyBlogController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReportCommentController;
+use App\Http\Controllers\TeacherAttendanceController;
 use App\Http\Controllers\UserController;
 use App\Models\ClassAnnouncement;
+use App\Models\TeacherAttendance;
 
 //HomePage
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -270,5 +272,11 @@ Route::controller(GradeController::class)->name('grade.')->group(function () {
 	});
 	Route::middleware(['auth'])->withoutMiddleware(['teacher'])->group(function () {
 		Route::get('/grade-management/my-grade', 'myGrade')->name('my-grade');
+	});
+});
+
+Route::controller(TeacherAttendanceController::class)->name('teacher-attendance.')->group(function () {
+	Route::middleware(['auth','admin'])->group(function () {
+		Route::post('/teacher-attendance-management/store/{class}/{lesson}/{user}', 'store')->name('store');
 	});
 });

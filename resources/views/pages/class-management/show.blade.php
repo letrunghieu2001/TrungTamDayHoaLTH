@@ -240,7 +240,41 @@
                     @endif
                     @foreach ($lessons as $lesson)
                         <h3 class="lesson_name" class="me-auto p-2 bd-highlight">
-                            {{ $lesson->name . ' ( ' . $lesson->created_at->format('d/m/Y') . ' ) ' }}</h3>
+                            {{ $lesson->name . ' ( ' . $lesson->created_at->format('d/m/Y') . ' ) ' }}
+                            @if (Auth::user()->role_id != 3)
+                                <span style="cursor: pointer; float: right" data-bs-toggle="modal"
+                                    data-bs-target="#updatelessonModal-{{ $lesson->id }}" class="tt-icon-btn"><i
+                                        class="fa-solid fa-pencil"></i></span>
+                                <div class="modal fade" id="updatelessonModal-{{ $lesson->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content" style="width:150%">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5 d-flex p-2" id="exampleModalLabel">
+                                                    Sửa bài học</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form action="{{ route('lesson.update', [$lesson->id]) }}" method="POST">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="appt">Tên bài học:</label>
+                                                        <input class="form-control" type="text" id="appt"
+                                                            value="{{ $lesson->name }}" name="name">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Đóng</button>
+                                                    <button type="submit" class="btn btn-danger">Sửa bài học</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </h3>
                         @if (Auth::user()->role_id != 3)
                             <button class="btn btn-primary btn-sm ms-auto button-float" data-bs-toggle="modal"
                                 data-bs-target="#createrLessonDetailModal-{{ $lesson->id }}"
@@ -261,6 +295,13 @@
                                 data-bs-toggle="modal" data-bs-target="#createrExamModal-{{ $lesson->id }}">Thêm đề
                                 kiểm tra cho
                                 {{ $lesson->name }}</button>
+                        @endif
+                        @if (Auth::user()->role_id == 1)
+                            <button class="btn btn-primary btn-sm ms-auto button-float"
+                                style="margin: 0 20px; background-color: purple; color: white" class="p-2 bd-highlight"
+                                data-bs-toggle="modal"
+                                data-bs-target="#createTeacherAttendanceModal-{{ $lesson->id }}">Chấm công giáo
+                                viên</button>
                         @endif
                         @if (Auth::user()->role_id != 3)
                             <div class="modal fade" id="createrLessonDetailModal-{{ $lesson->id }}" tabindex="-1"
@@ -322,6 +363,97 @@
                                                             </option>
                                                         @endforeach
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Đóng</button>
+                                                <button type="submit" class="btn btn-danger">Thêm</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        @if (Auth::user()->role_id == 1)
+                            <div class="modal fade" id="createTeacherAttendanceModal-{{ $lesson->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" style="width:150%">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5 d-flex p-2" id="exampleModalLabel">
+                                                Chấm công giáo viên</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form
+                                            action="{{ route('teacher-attendance.store', [$class->id, $lesson->id, $class->teacher_id]) }}"
+                                            method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="content">Chấm công giáo viên</label>
+                                                    <select name="status" class="form-select" required>
+                                                        <option class="not-select" value="" disabled selected>
+                                                            -- Chọn --</option>
+                                                        <option value="0" <?php if (
+                                                            App\Models\TeacherAttendance::where('lesson_id', $lesson->id)
+                                                                ->where('teacher_id', $class->teacher_id)
+                                                                ->where('status', 0)
+                                                                ->exists()
+                                                        ) {
+                                                            echo 'selected';
+                                                        }
+                                                        if (
+                                                            App\Models\TeacherAttendance::where('lesson_id', $lesson->id)
+                                                                ->where('teacher_id', $class->teacher_id)
+                                                                ->first() == null
+                                                        ) {
+                                                            echo 'selected';
+                                                        } ?>>
+                                                            Đúng giờ
+                                                        </option>
+                                                        <option value="1" <?php if (
+                                                            App\Models\TeacherAttendance::where('lesson_id', $lesson->id)
+                                                                ->where('teacher_id', $class->teacher_id)
+                                                                ->where('status', 1)
+                                                                ->exists()
+                                                        ) {
+                                                            echo 'selected';
+                                                        } ?>>
+                                                            Muộn
+                                                        </option>
+                                                        <option value="2" <?php if (
+                                                            App\Models\TeacherAttendance::where('lesson_id', $lesson->id)
+                                                                ->where('teacher_id', $class->teacher_id)
+                                                                ->where('status', 2)
+                                                                ->exists()
+                                                        ) {
+                                                            echo 'selected';
+                                                        } ?>>
+                                                            Vắng
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">Tiền phạt
+                                                        (nếu có tính theo VND - muộn 1p phạt 5k)
+                                                        :</label>
+                                                    <input class="form-control" type="number" <?php if (
+                                                        App\Models\TeacherAttendance::where('lesson_id', $lesson->id)
+                                                            ->where('teacher_id', $class->teacher_id)
+                                                            ->exists()
+                                                    ) {
+                                                        $money = App\Models\TeacherAttendance::where('lesson_id', $lesson->id)
+                                                            ->where('teacher_id', $class->teacher_id)
+                                                            ->first();
+                                                        $penalty_money = -$money->penalty_money;
+                                                        echo 'value="' . $penalty_money . '"';
+                                                    } else {
+                                                        echo 'value="0"';
+                                                    } ?>
+                                                        min="0" step="any" name="penalty_money"
+                                                        rows="2" style="resize: none">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
