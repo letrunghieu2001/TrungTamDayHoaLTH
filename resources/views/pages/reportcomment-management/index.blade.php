@@ -90,9 +90,8 @@
                                                                 khoản đã bị xóa</span>
                                                         @endif
                                                     </td>
-                                                    <td class="align-middle">
-                                                        <span
-                                                            class="text-secondary overflow text-xs font-weight-bold">{{ optional($reportComment->comment)->content }}</span>
+                                                    <td>
+                                                        <p class="text-xs font-weight-bold mb-0 reason">{!! optional($reportComment->comment)->content !!}</p>
                                                     </td>
                                                     <td>
                                                         <p class="text-xs font-weight-bold mb-0 reason">

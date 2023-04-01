@@ -14,7 +14,11 @@
             </div>
         </div>
     </section>
-
+    <style>
+        .modal-backdrop {
+            z-index: -1;
+        }
+        </style>
     <section class="probootstrap-section probootstrap-section-sm">
         <div class="container">
             <div class="row">
