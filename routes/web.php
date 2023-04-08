@@ -50,7 +50,9 @@ use App\Models\TeacherAttendance;
 
 //HomePage
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/periodic-table', [HomeController::class, 'periodicTable'])->name('home.periodic-table');
+Route::get('/periodic-table/IUPAC', [HomeController::class, 'periodicTableIUPAC'])->name('home.periodic-table-iupac');
+Route::get('/periodic-table/LATIN', [HomeController::class, 'periodicTableLATIN'])->name('home.periodic-table-latin');
+Route::get('/chemical-balance', [HomeController::class, 'chemicalBalance'])->name('home.chemical-balance');
 
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
@@ -258,7 +260,7 @@ Route::controller(ExamController::class)->name('exam.')->group(function () {
 	Route::middleware(['auth'])->group(function () {
 		Route::get('/exam/{exam}/{lesson}/warning', 'warningExam')->name('warning-exam');
 		Route::get('/exam/{exam}/{lesson}', 'doExam')->name('do-exam');
-		Route::get('/exam/{exam}/{lesson}/result', 'resultExam')->name('result-exam');
+		Route::get('/exam/{exam}/{lesson}/result/{user}', 'resultExam')->name('result-exam');
 	});
 });
 

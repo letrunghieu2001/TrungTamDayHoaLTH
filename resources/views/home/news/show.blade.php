@@ -27,7 +27,7 @@
                                         style="display: flex; align-items: center; justify-content: space-between">
                                         <div>
                                             <img src="{{ asset('storage/avatar/' . optional($new->user)->avatar) }}"
-                                                class="img-circle" style="width: 50px; height: auto" alt="user1">
+                                                class="img-circle" style="width: 50px; height: 50px" alt="user1">
                                             <span class="mb-0 text-sm"
                                                 style="margin:auto; margin-left: 20px; font-weight: bold">
                                                 {{ optional($new->user)->firstname . ' ' . optional($new->user)->lastname }}

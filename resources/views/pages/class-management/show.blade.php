@@ -240,7 +240,7 @@
                     @endif
                     @foreach ($lessons as $lesson)
                         <h3 class="lesson_name" class="me-auto p-2 bd-highlight">
-                            {{ $lesson->name . ' ( ' . $lesson->created_at->format('d/m/Y') . ' ) ' }}
+                            {{ $lesson->name }}
                             @if (Auth::user()->role_id != 3)
                                 <span style="cursor: pointer; float: right" data-bs-toggle="modal"
                                     data-bs-target="#updatelessonModal-{{ $lesson->id }}" class="tt-icon-btn"><i
@@ -278,23 +278,20 @@
                         @if (Auth::user()->role_id != 3)
                             <button class="btn btn-primary btn-sm ms-auto button-float" data-bs-toggle="modal"
                                 data-bs-target="#createrLessonDetailModal-{{ $lesson->id }}"
-                                style="margin: 0 20px; background-color: #6699FF" class="p-2 bd-highlight">Thêm tài liệu
-                                cho
-                                {{ $lesson->name }}</button>
+                                style="margin: 0 20px; background-color: #6699FF" class="p-2 bd-highlight">Thêm tài
+                                liệu</button>
                         @endif
                         @if (Auth::user()->role_id != 3)
                             <a href="{{ route('lessondetail.add-attendance', [$class->id, $lesson->id]) }}"><button
                                     class="btn btn-primary btn-sm ms-auto button-float"
                                     style="margin: 0 20px; background-color: #FFFF66; color: black"
-                                    class="p-2 bd-highlight">Điểm danh cho
-                                    {{ $lesson->name }}</button></a>
+                                    class="p-2 bd-highlight">Điểm danh</button></a>
                         @endif
                         @if (Auth::user()->role_id != 3)
                             <button class="btn btn-primary btn-sm ms-auto button-float"
                                 style="margin: 0 20px; background-color: #2dce89; color: black" class="p-2 bd-highlight"
                                 data-bs-toggle="modal" data-bs-target="#createrExamModal-{{ $lesson->id }}">Thêm đề
-                                kiểm tra cho
-                                {{ $lesson->name }}</button>
+                                kiểm tra</button>
                         @endif
                         @if (Auth::user()->role_id == 1)
                             <button class="btn btn-primary btn-sm ms-auto button-float"
@@ -521,7 +518,7 @@
                         @foreach ($lesson->exams as $exam)
                             <div style="display: flex; align-items: center; justify-content: space-between">
                                 @if (\App\Models\Grade::where('lesson_id', $lesson->id)->where('student_id', Auth::user()->id)->where('exam_id', $exam->id)->exists())
-                                    <a href="{{ route('exam.result-exam', [$exam->id, $lesson->id]) }}"
+                                    <a href="{{ route('exam.result-exam', [$exam->id, $lesson->id, Auth::user()->id ]) }}"
                                         style="text-decoration: underline">
                                     @else
                                         <a href="{{ route('exam.warning-exam', [$exam->id, $lesson->id]) }}"

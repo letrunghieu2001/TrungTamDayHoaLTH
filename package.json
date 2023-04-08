@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.2.0",
+        "chemical-equation-balancer": "^1.0.2",
         "fullcalendar": "^6.1.4",
         "jquery-autocomplete": "^1.2.8",
         "perfect-scrollbar": "^1.5.5"

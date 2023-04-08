@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Thêm câu hỏi'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Kết quả'])
     <div id="alert">
         @include('components.alert')
     </div>
@@ -13,7 +13,7 @@
                         <div class="d-flex align-items-center">
                             <p class="mb-0">{{ $exam->name }}</p>
                             <div class="btn btn-primary btn-sm ms-auto">Điểm của bạn:
-                                {{ $grade->grade }}</div>
+                                {{ optional($grade)->grade }}</div>
                         </div>
                     </div>
                 </div>

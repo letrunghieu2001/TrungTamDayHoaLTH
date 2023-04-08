@@ -7,6 +7,7 @@ use App\Models\ExamResult;
 use App\Models\Grade;
 use App\Models\Lesson;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -93,16 +94,16 @@ class ExamController extends Controller
             $questions = Question::where('exam_id', $exam->id)->get();
             return view('pages.exam-management.do-exam', compact('exam', 'questions', 'lesson'));
         } else {
-            return redirect()->route('exam.result-exam', [$exam->id, $lesson->id]);
+            return redirect()->route('exam.result-exam', [$exam->id, $lesson->id, Auth::user()->id]);
         }
     }
 
-    public function resultExam(Exam $exam, Lesson $lesson)
+    public function resultExam(Exam $exam, Lesson $lesson, User $user)
     {
         $questions = Question::where('exam_id', $exam->id)->get();
-        $grade = Grade::where('exam_id', $exam->id)->where('lesson_id', $lesson->id)->where('student_id', Auth::user()->id)->first();
+        $grade = Grade::where('exam_id', $exam->id)->where('lesson_id', $lesson->id)->where('student_id', $user->id)->first();
         foreach ($questions as $question) {
-            $result[$question->id] = ExamResult::where('user_id', Auth::user()->id)->where('question_id', $question->id)->first();
+            $result[$question->id] = ExamResult::where('user_id', $user->id)->where('question_id', $question->id)->first();
         }
         return view('pages.exam-management.result', compact('exam', 'questions', 'lesson', 'grade', 'result'));
     }

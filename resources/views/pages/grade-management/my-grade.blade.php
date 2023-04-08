@@ -67,7 +67,7 @@
                                                     </td>
                                                     <td>
                                                         <a
-                                                            href="{{ route('exam.result-exam', [$exam->exam_id, $exam->lesson_id]) }}"><i
+                                                            href="{{ route('exam.result-exam', [$exam->exam_id, $exam->lesson_id, Auth::user()->id]) }}"><i
                                                                 class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                                     </td>
                                                 </tr>

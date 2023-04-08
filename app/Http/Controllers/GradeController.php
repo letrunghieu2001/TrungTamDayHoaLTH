@@ -38,7 +38,7 @@ class GradeController extends Controller
             'lesson_id' => $lesson->id
         ]);
 
-        return redirect()->route('exam.result-exam', [$exam->id, $lesson->id]);
+        return redirect()->route('exam.result-exam', [$exam->id, $lesson->id, Auth::user()->id]);
     }
 
     public function myGrade()

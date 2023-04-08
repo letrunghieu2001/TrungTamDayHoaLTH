@@ -1,7 +1,7 @@
 @extends('layouts.home.app')
 
 @section('title')
-    Bảng tuần hoàn
+    Bảng tuần hoàn theo tiếng LATIN
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
                 <div class="atomic-number">1</div>
                 <div class="label">
                     <div class="symbol">H</div>
-                    <div class="name">Hydrogen</div>
+                    <div class="name">Hidro</div>
                 </div>
                 <div class="atomic-mass">1.008</div>
                 <ul class="atomic-weight">
@@ -41,7 +41,7 @@
                 <div class="atomic-number">2</div>
                 <div class="label">
                     <div class="symbol">He</div>
-                    <div class="name">Helium</div>
+                    <div class="name">Heli</div>
                 </div>
                 <div class="atomic-mass">4.0026</div>
                 <ul class="atomic-weight">
@@ -62,7 +62,7 @@
                 <div class="atomic-number">3</div>
                 <div class="label">
                     <div class="symbol">Li</div>
-                    <div class="name">Lithium</div>
+                    <div class="name">Liti</div>
                 </div>
                 <div class="atomic-mass">6.94</div>
                 <ul class="atomic-weight">
@@ -86,7 +86,7 @@
                 <div class="atomic-number">4</div>
                 <div class="label">
                     <div class="symbol">Be</div>
-                    <div class="name">Beryllium</div>
+                    <div class="name">Beri</div>
                 </div>
                 <div class="atomic-mass">9.0122</div>
                 <ul class="atomic-weight">
@@ -112,7 +112,7 @@
                 <div class="atomic-number">5</div>
                 <div class="label">
                     <div class="symbol">B</div>
-                    <div class="name">Boron</div>
+                    <div class="name">Bo</div>
                 </div>
                 <div class="atomic-mass">10.81</div>
                 <ul class="atomic-weight">
@@ -139,7 +139,7 @@
                 <div class="atomic-number">6</div>
                 <div class="label">
                     <div class="symbol">C</div>
-                    <div class="name">Carbon</div>
+                    <div class="name">Cacbon</div>
                 </div>
                 <div class="atomic-mass">12.011</div>
                 <ul class="atomic-weight">
@@ -167,7 +167,7 @@
                 <div class="atomic-number">7</div>
                 <div class="label">
                     <div class="symbol">N</div>
-                    <div class="name">Nitrogen</div>
+                    <div class="name">Nitơ</div>
                 </div>
                 <div class="atomic-mass">14.007</div>
                 <ul class="atomic-weight">
@@ -196,7 +196,7 @@
                 <div class="atomic-number">8</div>
                 <div class="label">
                     <div class="symbol">O</div>
-                    <div class="name">Oxygen</div>
+                    <div class="name">Oxy</div>
                 </div>
                 <div class="atomic-mass">15.999</div>
                 <ul class="atomic-weight">
@@ -226,7 +226,7 @@
                 <div class="atomic-number">9</div>
                 <div class="label">
                     <div class="symbol">F</div>
-                    <div class="name">Flourine</div>
+                    <div class="name">Flo</div>
                 </div>
                 <div class="atomic-mass">18.998</div>
                 <ul class="atomic-weight">
@@ -291,7 +291,7 @@
                 <div class="atomic-number">11</div>
                 <div class="label">
                     <div class="symbol">Na</div>
-                    <div class="name">Sodium</div>
+                    <div class="name">Natri</div>
                 </div>
                 <div class="atomic-mass">22.99</div>
                 <ul class="atomic-weight">
@@ -327,7 +327,7 @@
                 <div class="atomic-number">12</div>
                 <div class="label">
                     <div class="symbol">Mg</div>
-                    <div class="name">Magnesium</div>
+                    <div class="name">Magie</div>
                 </div>
                 <div class="atomic-mass">24.305</div>
                 <ul class="atomic-weight">
@@ -364,7 +364,7 @@
                 <div class="atomic-number">13</div>
                 <div class="label">
                     <div class="symbol">Al</div>
-                    <div class="name">Aluminium</div>
+                    <div class="name">Nhôm</div>
                 </div>
                 <div class="atomic-mass">26.982</div>
                 <ul class="atomic-weight">
@@ -402,7 +402,7 @@
                 <div class="atomic-number">14</div>
                 <div class="label">
                     <div class="symbol">Si</div>
-                    <div class="name">Silicon</div>
+                    <div class="name">Silic</div>
                 </div>
                 <div class="atomic-mass">28.085</div>
                 <ul class="atomic-weight">
@@ -441,7 +441,7 @@
                 <div class="atomic-number">15</div>
                 <div class="label">
                     <div class="symbol">P</div>
-                    <div class="name">Phosphorus</div>
+                    <div class="name">Photpho</div>
                 </div>
                 <div class="atomic-mass">30.974</div>
                 <ul class="atomic-weight">
@@ -481,7 +481,7 @@
                 <div class="atomic-number">16</div>
                 <div class="label">
                     <div class="symbol">S</div>
-                    <div class="name">Sulfur</div>
+                    <div class="name">Lưu huỳnh</div>
                 </div>
                 <div class="atomic-mass">32.06</div>
                 <ul class="atomic-weight">
@@ -522,7 +522,7 @@
                 <div class="atomic-number">17</div>
                 <div class="label">
                     <div class="symbol">Cl</div>
-                    <div class="name">Chlorine</div>
+                    <div class="name">Clo</div>
                 </div>
                 <div class="atomic-mass">35.45</div>
                 <ul class="atomic-weight">
@@ -609,7 +609,7 @@
                 <div class="atomic-number">19</div>
                 <div class="label">
                     <div class="symbol">K</div>
-                    <div class="name">Potassium</div>
+                    <div class="name">Kali</div>
                 </div>
                 <div class="atomic-mass">39.098</div>
                 <ul class="atomic-weight">
@@ -656,7 +656,7 @@
                 <div class="atomic-number">20</div>
                 <div class="label">
                     <div class="symbol">Ca</div>
-                    <div class="name">Calcium</div>
+                    <div class="name">Canxi</div>
                 </div>
                 <div class="atomic-mass">40.078</div>
                 <ul class="atomic-weight">
@@ -704,7 +704,7 @@
                 <div class="atomic-number">21</div>
                 <div class="label">
                     <div class="symbol">Sc</div>
-                    <div class="name">Scandium</div>
+                    <div class="name">Scandi</div>
                 </div>
                 <div class="atomic-mass">44.956</div>
                 <ul class="atomic-weight">
@@ -753,7 +753,7 @@
                 <div class="atomic-number">22</div>
                 <div class="label">
                     <div class="symbol">Ti</div>
-                    <div class="name">Titanium</div>
+                    <div class="name">Titan</div>
                 </div>
                 <div class="atomic-mass">47.867</div>
                 <ul class="atomic-weight">
@@ -803,7 +803,7 @@
                 <div class="atomic-number">23</div>
                 <div class="label">
                     <div class="symbol">V</div>
-                    <div class="name">Vanadium</div>
+                    <div class="name">Vanadi</div>
                 </div>
                 <div class="atomic-mass">50.942</div>
                 <ul class="atomic-weight">
@@ -854,7 +854,7 @@
                 <div class="atomic-number">24</div>
                 <div class="label">
                     <div class="symbol">Cr</div>
-                    <div class="name">Chromium</div>
+                    <div class="name">Crom</div>
                 </div>
                 <div class="atomic-mass">51.996</div>
                 <ul class="atomic-weight">
@@ -906,7 +906,7 @@
                 <div class="atomic-number">25</div>
                 <div class="label">
                     <div class="symbol">Mn</div>
-                    <div class="name">Manganese</div>
+                    <div class="name">Mangan</div>
                 </div>
                 <div class="atomic-mass">54.938</div>
                 <ul class="atomic-weight">
@@ -959,7 +959,7 @@
                 <div class="atomic-number">26</div>
                 <div class="label">
                     <div class="symbol">Fe</div>
-                    <div class="name">Iron</div>
+                    <div class="name">Sắt</div>
                 </div>
                 <div class="atomic-mass">55.845</div>
                 <ul class="atomic-weight">
@@ -1013,7 +1013,7 @@
                 <div class="atomic-number">27</div>
                 <div class="label">
                     <div class="symbol">Co</div>
-                    <div class="name">Cobalt</div>
+                    <div class="name">Coban</div>
                 </div>
                 <div class="atomic-mass">58.933</div>
                 <ul class="atomic-weight">
@@ -1068,7 +1068,7 @@
                 <div class="atomic-number">28</div>
                 <div class="label">
                     <div class="symbol">Ni</div>
-                    <div class="name">Nickel</div>
+                    <div class="name">Niken</div>
                 </div>
                 <div class="atomic-mass">58.693</div>
                 <ul class="atomic-weight">
@@ -1124,7 +1124,7 @@
                 <div class="atomic-number">29</div>
                 <div class="label">
                     <div class="symbol">Cu</div>
-                    <div class="name">Copper</div>
+                    <div class="name">Đồng</div>
                 </div>
                 <div class="atomic-mass">63.546</div>
                 <ul class="atomic-weight">
@@ -1181,7 +1181,7 @@
                 <div class="atomic-number">30</div>
                 <div class="label">
                     <div class="symbol">Zn</div>
-                    <div class="name">Zinc</div>
+                    <div class="name">Kẽm</div>
                 </div>
                 <div class="atomic-mass">65.38</div>
                 <ul class="atomic-weight">
@@ -1239,7 +1239,7 @@
                 <div class="atomic-number">31</div>
                 <div class="label">
                     <div class="symbol">Ga</div>
-                    <div class="name">Gallium</div>
+                    <div class="name">Galli</div>
                 </div>
                 <div class="atomic-mass">69.723</div>
                 <ul class="atomic-weight">
@@ -1298,7 +1298,7 @@
                 <div class="atomic-number">32</div>
                 <div class="label">
                     <div class="symbol">Ge</div>
-                    <div class="name">Germanium</div>
+                    <div class="name">Germani</div>
                 </div>
                 <div class="atomic-mass">72.63</div>
                 <ul class="atomic-weight">
@@ -1358,7 +1358,7 @@
                 <div class="atomic-number">33</div>
                 <div class="label">
                     <div class="symbol">As</div>
-                    <div class="name">Arsenic</div>
+                    <div class="name">Arsen</div>
                 </div>
                 <div class="atomic-mass">74.922</div>
                 <ul class="atomic-weight">
@@ -1419,7 +1419,7 @@
                 <div class="atomic-number">34</div>
                 <div class="label">
                     <div class="symbol">Se</div>
-                    <div class="name">Selenium</div>
+                    <div class="name">Selen</div>
                 </div>
                 <div class="atomic-mass">78.971</div>
                 <ul class="atomic-weight">
@@ -1481,7 +1481,7 @@
                 <div class="atomic-number">35</div>
                 <div class="label">
                     <div class="symbol">Br</div>
-                    <div class="name">Bromine</div>
+                    <div class="name">Brom</div>
                 </div>
                 <div class="atomic-mass">79.904</div>
                 <ul class="atomic-weight">
@@ -1610,7 +1610,7 @@
                 <div class="atomic-number">37</div>
                 <div class="label">
                     <div class="symbol">Rb</div>
-                    <div class="name">Rubidium</div>
+                    <div class="name">Rubidi</div>
                 </div>
                 <div class="atomic-mass">85.468</div>
                 <ul class="atomic-weight">
@@ -1678,7 +1678,7 @@
                 <div class="atomic-number">38</div>
                 <div class="label">
                     <div class="symbol">Sr</div>
-                    <div class="name">Strontium</div>
+                    <div class="name">Stronti</div>
                 </div>
                 <div class="atomic-mass">87.62</div>
                 <ul class="atomic-weight">
@@ -1747,7 +1747,7 @@
                 <div class="atomic-number">39</div>
                 <div class="label">
                     <div class="symbol">Y</div>
-                    <div class="name">Yttrium</div>
+                    <div class="name">Yttri</div>
                 </div>
                 <div class="atomic-mass">88.906</div>
                 <ul class="atomic-weight">
@@ -1817,7 +1817,7 @@
                 <div class="atomic-number">40</div>
                 <div class="label">
                     <div class="symbol">Zr</div>
-                    <div class="name">Zirconium</div>
+                    <div class="name">Zirconi</div>
                 </div>
                 <div class="atomic-mass">91.224</div>
                 <ul class="atomic-weight">
@@ -1888,7 +1888,7 @@
                 <div class="atomic-number">41</div>
                 <div class="label">
                     <div class="symbol">Nb</div>
-                    <div class="name">Niobium</div>
+                    <div class="name">Niobi</div>
                 </div>
                 <div class="atomic-mass">92.906</div>
                 <ul class="atomic-weight">
@@ -1960,7 +1960,7 @@
                 <div class="atomic-number">42</div>
                 <div class="label">
                     <div class="symbol">Mo</div>
-                    <div class="name">Molybdenum</div>
+                    <div class="name">Molybden</div>
                 </div>
                 <div class="atomic-mass">95.95</div>
                 <ul class="atomic-weight">
@@ -2033,7 +2033,7 @@
                 <div class="atomic-number">43</div>
                 <div class="label">
                     <div class="symbol">Tc</div>
-                    <div class="name">Technetium</div>
+                    <div class="name">Techneti</div>
                 </div>
                 <div class="atomic-mass">(98)</div>
                 <ul class="atomic-weight">
@@ -2107,7 +2107,7 @@
                 <div class="atomic-number">44</div>
                 <div class="label">
                     <div class="symbol">Ru</div>
-                    <div class="name">Ruthenium</div>
+                    <div class="name">Rutheni</div>
                 </div>
                 <div class="atomic-mass">101.07</div>
                 <ul class="atomic-weight">
@@ -2182,7 +2182,7 @@
                 <div class="atomic-number">45</div>
                 <div class="label">
                     <div class="symbol">Rh</div>
-                    <div class="name">Rhodium</div>
+                    <div class="name">Rhodi</div>
                 </div>
                 <div class="atomic-mass">102.91</div>
                 <ul class="atomic-weight">
@@ -2256,7 +2256,7 @@
                 <div class="atomic-number">46</div>
                 <div class="label">
                     <div class="symbol">Pd</div>
-                    <div class="name">Palladium</div>
+                    <div class="name">Palladi</div>
                 </div>
                 <div class="atomic-mass">106.42</div>
                 <ul class="atomic-weight">
@@ -2332,7 +2332,7 @@
                 <div class="atomic-number">47</div>
                 <div class="label">
                     <div class="symbol">Ag</div>
-                    <div class="name">Silver</div>
+                    <div class="name">Bạc</div>
                 </div>
                 <div class="atomic-mass">107.87</div>
                 <ul class="atomic-weight">
@@ -2410,7 +2410,7 @@
                 <div class="atomic-number">48</div>
                 <div class="label">
                     <div class="symbol">Cd</div>
-                    <div class="name">Cadmium</div>
+                    <div class="name">Cadi</div>
                 </div>
                 <div class="atomic-mass">112.41</div>
                 <ul class="atomic-weight">
@@ -2489,7 +2489,7 @@
                 <div class="atomic-number">49</div>
                 <div class="label">
                     <div class="symbol">In</div>
-                    <div class="name">Indium</div>
+                    <div class="name">Indi</div>
                 </div>
                 <div class="atomic-mass">114.82</div>
                 <ul class="atomic-weight">
@@ -2569,7 +2569,7 @@
                 <div class="atomic-number">50</div>
                 <div class="label">
                     <div class="symbol">Sn</div>
-                    <div class="name">Tin</div>
+                    <div class="name">Thiếc</div>
                 </div>
                 <div class="atomic-mass">204.38</div>
                 <ul class="atomic-weight">
@@ -2650,7 +2650,7 @@
                 <div class="atomic-number">51</div>
                 <div class="label">
                     <div class="symbol">Sb</div>
-                    <div class="name">Antimony</div>
+                    <div class="name">Antimon</div>
                 </div>
                 <div class="atomic-mass">121.76</div>
                 <ul class="atomic-weight">
@@ -2732,7 +2732,7 @@
                 <div class="atomic-number">52</div>
                 <div class="label">
                     <div class="symbol">Te</div>
-                    <div class="name">Tellurium</div>
+                    <div class="name">Tellur</div>
                 </div>
                 <div class="atomic-mass">127.6</div>
                 <ul class="atomic-weight">
@@ -2815,7 +2815,7 @@
                 <div class="atomic-number">53</div>
                 <div class="label">
                     <div class="symbol">I</div>
-                    <div class="name">Iodine</div>
+                    <div class="name">Iot</div>
                 </div>
                 <div class="atomic-mass">126.9</div>
                 <ul class="atomic-weight">
@@ -2986,7 +2986,7 @@
                 <div class="atomic-number">55</div>
                 <div class="label">
                     <div class="symbol">Cs</div>
-                    <div class="name">Caesium</div>
+                    <div class="name">Xesi</div>
                 </div>
                 <div class="atomic-mass">132.91</div>
                 <ul class="atomic-weight">
@@ -3075,7 +3075,7 @@
                 <div class="atomic-number">56</div>
                 <div class="label">
                     <div class="symbol">Ba</div>
-                    <div class="name">Barium</div>
+                    <div class="name">Bari</div>
                 </div>
                 <div class="atomic-mass">137.33</div>
                 <ul class="atomic-weight">
@@ -3165,7 +3165,7 @@
                 <div class="atomic-number">57</div>
                 <div class="label">
                     <div class="symbol">La</div>
-                    <div class="name">Lanthanum</div>
+                    <div class="name">Lantan</div>
                 </div>
                 <div class="atomic-mass">138.91</div>
                 <ul class="atomic-weight">
@@ -3256,7 +3256,7 @@
                 <div class="atomic-number">58</div>
                 <div class="label">
                     <div class="symbol">Ce</div>
-                    <div class="name">Cerium</div>
+                    <div class="name">Ceri</div>
                 </div>
                 <div class="atomic-mass">140.12</div>
                 <ul class="atomic-weight">
@@ -3348,7 +3348,7 @@
                 <div class="atomic-number">59</div>
                 <div class="label">
                     <div class="symbol">Pr</div>
-                    <div class="name">Praseodymium</div>
+                    <div class="name">Praseodymi</div>
                 </div>
                 <div class="atomic-mass">140.91</div>
                 <ul class="atomic-weight">
@@ -3441,7 +3441,7 @@
                 <div class="atomic-number">60</div>
                 <div class="label">
                     <div class="symbol">Nd</div>
-                    <div class="name">Neodymium</div>
+                    <div class="name">Neodymi</div>
                 </div>
                 <div class="atomic-mass">144.24</div>
                 <ul class="atomic-weight">
@@ -3535,7 +3535,7 @@
                 <div class="atomic-number">61</div>
                 <div class="label">
                     <div class="symbol">Pm</div>
-                    <div class="name">Promethium</div>
+                    <div class="name">Promethi</div>
                 </div>
                 <div class="atomic-mass">144.24</div>
                 <ul class="atomic-weight">
@@ -3630,7 +3630,7 @@
                 <div class="atomic-number">62</div>
                 <div class="label">
                     <div class="symbol">Sm</div>
-                    <div class="name">Samarium</div>
+                    <div class="name">Samari</div>
                 </div>
                 <div class="atomic-mass">150.36</div>
                 <ul class="atomic-weight">
@@ -3726,7 +3726,7 @@
                 <div class="atomic-number">63</div>
                 <div class="label">
                     <div class="symbol">Eu</div>
-                    <div class="name">Europium</div>
+                    <div class="name">Europi</div>
                 </div>
                 <div class="atomic-mass">151.96</div>
                 <ul class="atomic-weight">
@@ -3823,7 +3823,7 @@
                 <div class="atomic-number">64</div>
                 <div class="label">
                     <div class="symbol">Gd</div>
-                    <div class="name">Gadolinium</div>
+                    <div class="name">Gadolini</div>
                 </div>
                 <div class="atomic-mass">157.25</div>
                 <ul class="atomic-weight">
@@ -3921,7 +3921,7 @@
                 <div class="atomic-number">65</div>
                 <div class="label">
                     <div class="symbol">Tb</div>
-                    <div class="name">Terbium</div>
+                    <div class="name">Terbi</div>
                 </div>
                 <div class="atomic-mass">158.93</div>
                 <ul class="atomic-weight">
@@ -4020,7 +4020,7 @@
                 <div class="atomic-number">66</div>
                 <div class="label">
                     <div class="symbol">Dy</div>
-                    <div class="name">Dysprosium</div>
+                    <div class="name">Dysprosi</div>
                 </div>
                 <div class="atomic-mass">162.5</div>
                 <ul class="atomic-weight">
@@ -4120,7 +4120,7 @@
                 <div class="atomic-number">67</div>
                 <div class="label">
                     <div class="symbol">Ho</div>
-                    <div class="name">Holmium</div>
+                    <div class="name">Holmi</div>
                 </div>
                 <div class="atomic-mass">164.93</div>
                 <ul class="atomic-weight">
@@ -4221,7 +4221,7 @@
                 <div class="atomic-number">68</div>
                 <div class="label">
                     <div class="symbol">Er</div>
-                    <div class="name">Erbium</div>
+                    <div class="name">Erbi</div>
                 </div>
                 <div class="atomic-mass">167.26</div>
                 <ul class="atomic-weight">
@@ -4323,7 +4323,7 @@
                 <div class="atomic-number">69</div>
                 <div class="label">
                     <div class="symbol">Tm</div>
-                    <div class="name">Thulium</div>
+                    <div class="name">Thuli</div>
                 </div>
                 <div class="atomic-mass">168.93</div>
                 <ul class="atomic-weight">
@@ -4426,7 +4426,7 @@
                 <div class="atomic-number">70</div>
                 <div class="label">
                     <div class="symbol">Yb</div>
-                    <div class="name">Ytterbium</div>
+                    <div class="name">Ytterbi</div>
                 </div>
                 <div class="atomic-mass">173.05</div>
                 <ul class="atomic-weight">
@@ -4530,7 +4530,7 @@
                 <div class="atomic-number">71</div>
                 <div class="label">
                     <div class="symbol">Lu</div>
-                    <div class="name">Lutetium</div>
+                    <div class="name">Luteti</div>
                 </div>
                 <div class="atomic-mass">174.97</div>
                 <ul class="atomic-weight">
@@ -4635,7 +4635,7 @@
                 <div class="atomic-number">72</div>
                 <div class="label">
                     <div class="symbol">Hf</div>
-                    <div class="name">Hafnium</div>
+                    <div class="name">Hafni</div>
                 </div>
                 <div class="atomic-mass">178.49</div>
                 <ul class="atomic-weight">
@@ -4741,7 +4741,7 @@
                 <div class="atomic-number">73</div>
                 <div class="label">
                     <div class="symbol">Ta</div>
-                    <div class="name">Tantalum</div>
+                    <div class="name">Tantal</div>
                 </div>
                 <div class="atomic-mass">180.95</div>
                 <ul class="atomic-weight">
@@ -4848,7 +4848,7 @@
                 <div class="atomic-number">74</div>
                 <div class="label">
                     <div class="symbol">W</div>
-                    <div class="name">Tungsten</div>
+                    <div class="name">Wolfram</div>
                 </div>
                 <div class="atomic-mass">183.84</div>
                 <ul class="atomic-weight">
@@ -4956,7 +4956,7 @@
                 <div class="atomic-number">75</div>
                 <div class="label">
                     <div class="symbol">Re</div>
-                    <div class="name">Rhenium</div>
+                    <div class="name">Rheni</div>
                 </div>
                 <div class="atomic-mass">186.21</div>
                 <ul class="atomic-weight">
@@ -5065,7 +5065,7 @@
                 <div class="atomic-number">76</div>
                 <div class="label">
                     <div class="symbol">Os</div>
-                    <div class="name">Osmium</div>
+                    <div class="name">Osmi</div>
                 </div>
                 <div class="atomic-mass">190.23</div>
                 <ul class="atomic-weight">
@@ -5175,7 +5175,7 @@
                 <div class="atomic-number">77</div>
                 <div class="label">
                     <div class="symbol">Ir</div>
-                    <div class="name">Iridium</div>
+                    <div class="name">Iridi</div>
                 </div>
                 <div class="atomic-mass">192.22</div>
                 <ul class="atomic-weight">
@@ -5286,7 +5286,7 @@
                 <div class="atomic-number">78</div>
                 <div class="label">
                     <div class="symbol">Pt</div>
-                    <div class="name">Platinum</div>
+                    <div class="name">Platin</div>
                 </div>
                 <div class="atomic-mass">195.08</div>
                 <ul class="atomic-weight">
@@ -5398,7 +5398,7 @@
                 <div class="atomic-number">79</div>
                 <div class="label">
                     <div class="symbol">Au</div>
-                    <div class="name">Gold</div>
+                    <div class="name">Vàng</div>
                 </div>
                 <div class="atomic-mass">196.97</div>
                 <ul class="atomic-weight">
@@ -5511,7 +5511,7 @@
                 <div class="atomic-number">80</div>
                 <div class="label">
                     <div class="symbol">Hg</div>
-                    <div class="name">Mercury</div>
+                    <div class="name">Thủy ngân</div>
                 </div>
                 <div class="atomic-mass">200.59</div>
                 <ul class="atomic-weight">
@@ -5625,7 +5625,7 @@
                 <div class="atomic-number">81</div>
                 <div class="label">
                     <div class="symbol">Tl</div>
-                    <div class="name">Thallium</div>
+                    <div class="name">Thalli</div>
                 </div>
                 <div class="atomic-mass">204.38</div>
                 <ul class="atomic-weight">
@@ -5740,7 +5740,7 @@
                 <div class="atomic-number">82</div>
                 <div class="label">
                     <div class="symbol">Pb</div>
-                    <div class="name">Lead</div>
+                    <div class="name">Chì</div>
                 </div>
                 <div class="atomic-mass">207.2</div>
                 <ul class="atomic-weight">
@@ -5856,7 +5856,7 @@
                 <div class="atomic-number">83</div>
                 <div class="label">
                     <div class="symbol">Bi</div>
-                    <div class="name">Bismuth</div>
+                    <div class="name">Bismut</div>
                 </div>
                 <div class="atomic-mass">208.98</div>
                 <ul class="atomic-weight">
@@ -5973,7 +5973,7 @@
                 <div class="atomic-number">84</div>
                 <div class="label">
                     <div class="symbol">Po</div>
-                    <div class="name">Polonium</div>
+                    <div class="name">Poloni</div>
                 </div>
                 <div class="atomic-mass">(209)</div>
                 <ul class="atomic-weight">
@@ -6332,7 +6332,7 @@
                 <div class="atomic-number">87</div>
                 <div class="label">
                     <div class="symbol">Fr</div>
-                    <div class="name">Francium</div>
+                    <div class="name">Franci</div>
                 </div>
                 <div class="atomic-mass">(223)</div>
                 <ul class="atomic-weight">
@@ -6581,7 +6581,7 @@
                 <div class="atomic-number">89</div>
                 <div class="label">
                     <div class="symbol">Ac</div>
-                    <div class="name">Actinium</div>
+                    <div class="name">Actini</div>
                 </div>
                 <div class="atomic-mass">(227)</div>
                 <ul class="atomic-weight">
@@ -6707,7 +6707,7 @@
                 <div class="atomic-number">90</div>
                 <div class="label">
                     <div class="symbol">Th</div>
-                    <div class="name">Thorium</div>
+                    <div class="name">Thori</div>
                 </div>
                 <div class="atomic-mass">232.04</div>
                 <ul class="atomic-weight">
@@ -6834,7 +6834,7 @@
                 <div class="atomic-number">91</div>
                 <div class="label">
                     <div class="symbol">Pa</div>
-                    <div class="name">Protactinium</div>
+                    <div class="name">Protactini</div>
                 </div>
                 <div class="atomic-mass">231.04</div>
                 <ul class="atomic-weight">
@@ -7091,7 +7091,7 @@
                 <div class="atomic-number">93</div>
                 <div class="label">
                     <div class="symbol">Np</div>
-                    <div class="name">Neptunium</div>
+                    <div class="name">Neptuni</div>
                 </div>
                 <div class="atomic-mass">(237)</div>
                 <ul class="atomic-weight">
@@ -7221,7 +7221,7 @@
                 <div class="atomic-number">94</div>
                 <div class="label">
                     <div class="symbol">Pu</div>
-                    <div class="name">Plutonium</div>
+                    <div class="name">Pluton</div>
                 </div>
                 <div class="atomic-mass">(244)</div>
                 <ul class="atomic-weight">
@@ -7352,7 +7352,7 @@
                 <div class="atomic-number">95</div>
                 <div class="label">
                     <div class="symbol">Am</div>
-                    <div class="name">Americium</div>
+                    <div class="name">Americi</div>
                 </div>
                 <div class="atomic-mass">(243)</div>
                 <ul class="atomic-weight">
@@ -7484,7 +7484,7 @@
                 <div class="atomic-number">96</div>
                 <div class="label">
                     <div class="symbol">Cm</div>
-                    <div class="name">Curium</div>
+                    <div class="name">Curi</div>
                 </div>
                 <div class="atomic-mass">(247)</div>
                 <ul class="atomic-weight">
@@ -7617,7 +7617,7 @@
                 <div class="atomic-number">97</div>
                 <div class="label">
                     <div class="symbol">Bk</div>
-                    <div class="name">Berkelium</div>
+                    <div class="name">Berkeli</div>
                 </div>
                 <div class="atomic-mass">(247)</div>
                 <ul class="atomic-weight">
@@ -7751,7 +7751,7 @@
                 <div class="atomic-number">98</div>
                 <div class="label">
                     <div class="symbol">Cf</div>
-                    <div class="name">Californium</div>
+                    <div class="name">Californi</div>
                 </div>
                 <div class="atomic-mass">(251)</div>
                 <ul class="atomic-weight">
@@ -7886,7 +7886,7 @@
                 <div class="atomic-number">99</div>
                 <div class="label">
                     <div class="symbol">Es</div>
-                    <div class="name">Einsteinium</div>
+                    <div class="name">Einsteini</div>
                 </div>
                 <div class="atomic-mass">(252)</div>
                 <ul class="atomic-weight">
@@ -8022,7 +8022,7 @@
                 <div class="atomic-number">100</div>
                 <div class="label">
                     <div class="symbol">Fm</div>
-                    <div class="name">Fermium</div>
+                    <div class="name">Fermi</div>
                 </div>
                 <div class="atomic-mass">(257)</div>
                 <ul class="atomic-weight">
@@ -8159,7 +8159,7 @@
                 <div class="atomic-number">101</div>
                 <div class="label">
                     <div class="symbol">Md</div>
-                    <div class="name">Mendelevium</div>
+                    <div class="name">Mendelevi</div>
                 </div>
                 <div class="atomic-mass">(258)</div>
                 <ul class="atomic-weight">
@@ -8297,7 +8297,7 @@
                 <div class="atomic-number">102</div>
                 <div class="label">
                     <div class="symbol">No</div>
-                    <div class="name">Nobelium</div>
+                    <div class="name">Nobeli</div>
                 </div>
                 <div class="atomic-mass">(259)</div>
                 <ul class="atomic-weight">
@@ -8436,7 +8436,7 @@
                 <div class="atomic-number">103</div>
                 <div class="label">
                     <div class="symbol">Lr</div>
-                    <div class="name">Lawrencium</div>
+                    <div class="name">Lawrenci</div>
                 </div>
                 <div class="atomic-mass">(266)</div>
                 <ul class="atomic-weight">
@@ -8576,7 +8576,7 @@
                 <div class="atomic-number">104</div>
                 <div class="label">
                     <div class="symbol">Rf</div>
-                    <div class="name">Rutherfordium</div>
+                    <div class="name">Rutherfordi</div>
                 </div>
                 <div class="atomic-mass">(267)</div>
                 <ul class="atomic-weight">
@@ -8717,7 +8717,7 @@
                 <div class="atomic-number">105</div>
                 <div class="label">
                     <div class="symbol">Db</div>
-                    <div class="name">Dubnium</div>
+                    <div class="name">Dubni</div>
                 </div>
                 <div class="atomic-mass">(268)</div>
                 <ul class="atomic-weight">
@@ -8859,7 +8859,7 @@
                 <div class="atomic-number">106</div>
                 <div class="label">
                     <div class="symbol">Sg</div>
-                    <div class="name">Seaborgium</div>
+                    <div class="name">Seaborgi</div>
                 </div>
                 <div class="atomic-mass">(269)</div>
                 <ul class="atomic-weight">
@@ -9002,7 +9002,7 @@
                 <div class="atomic-number">107</div>
                 <div class="label">
                     <div class="symbol">Bh</div>
-                    <div class="name">Bohrium</div>
+                    <div class="name">Bohri</div>
                 </div>
                 <div class="atomic-mass">(270)</div>
                 <ul class="atomic-weight">
@@ -9146,7 +9146,7 @@
                 <div class="atomic-number">108</div>
                 <div class="label">
                     <div class="symbol">Hs</div>
-                    <div class="name">Hassium</div>
+                    <div class="name">Hassi</div>
                 </div>
                 <div class="atomic-mass">(277)</div>
                 <ul class="atomic-weight">
@@ -9291,7 +9291,7 @@
                 <div class="atomic-number">109</div>
                 <div class="label">
                     <div class="symbol">Mt</div>
-                    <div class="name">Meitnerium</div>
+                    <div class="name">Meitneri</div>
                 </div>
                 <div class="atomic-mass">(278)</div>
                 <ul class="atomic-weight">
@@ -9437,7 +9437,7 @@
                 <div class="atomic-number">110</div>
                 <div class="label">
                     <div class="symbol">Ds</div>
-                    <div class="name">Darmstadtium</div>
+                    <div class="name">Darmstadti</div>
                 </div>
                 <div class="atomic-mass">(281)</div>
                 <ul class="atomic-weight">
@@ -9584,7 +9584,7 @@
                 <div class="atomic-number">111</div>
                 <div class="label">
                     <div class="symbol">Rg</div>
-                    <div class="name">Roentgenium</div>
+                    <div class="name">Roentgeni</div>
                 </div>
                 <div class="atomic-mass">(282)</div>
                 <ul class="atomic-weight">
@@ -9732,7 +9732,7 @@
                 <div class="atomic-number">112</div>
                 <div class="label">
                     <div class="symbol">Cn</div>
-                    <div class="name">Copernicium</div>
+                    <div class="name">Copernici</div>
                 </div>
                 <div class="atomic-mass">(282)</div>
                 <ul class="atomic-weight">
@@ -9881,7 +9881,7 @@
                 <div class="atomic-number">113</div>
                 <div class="label">
                     <div class="symbol">Nh</div>
-                    <div class="name">Nihonium</div>
+                    <div class="name">Nihoni</div>
                 </div>
                 <div class="atomic-mass">(286)</div>
                 <ul class="atomic-weight">
@@ -10031,7 +10031,7 @@
                 <div class="atomic-number">114</div>
                 <div class="label">
                     <div class="symbol">Fl</div>
-                    <div class="name">Flerovium</div>
+                    <div class="name">Flerovi</div>
                 </div>
                 <div class="atomic-mass">(289)</div>
                 <ul class="atomic-weight">
@@ -10182,7 +10182,7 @@
                 <div class="atomic-number">115</div>
                 <div class="label">
                     <div class="symbol">Mc</div>
-                    <div class="name">Moscovium</div>
+                    <div class="name">Moscovi</div>
                 </div>
                 <div class="atomic-mass">(290)</div>
                 <ul class="atomic-weight">
@@ -10334,7 +10334,7 @@
                 <div class="atomic-number">116</div>
                 <div class="label">
                     <div class="symbol">Lv</div>
-                    <div class="name">Livermorium</div>
+                    <div class="name">Livermori</div>
                 </div>
                 <div class="atomic-mass">(293)</div>
                 <ul class="atomic-weight">

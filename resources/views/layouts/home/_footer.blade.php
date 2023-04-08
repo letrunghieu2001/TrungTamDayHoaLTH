@@ -127,7 +127,6 @@
                                 </div>
                             </div>
                         </div>
-                        <li><a href="{{ route('home.periodic-table') }}">Bảng tuần hoàn</a></li>
                         <li><a href="{{ route('news.index') }}">Tin tức</a></li>
                         <li><a href="{{ route('blog.index') }}">Blog</a></li>
                     </ul>

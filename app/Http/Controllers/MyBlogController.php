@@ -54,11 +54,14 @@ class MyBlogController extends Controller
     {
         $content = $request->content;
         $dom = new \DomDocument();
-        $dom->loadHtml('<?xml encoding="utf-8" ?>' .$content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        @$dom->loadHtml('<?xml encoding="utf-8" ?>' .$content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $imageFile = $dom->getElementsByTagName('img');
 
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
+            if (strpos($data, ';') === false) {
+                continue;
+            }
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
             $imgeData = base64_decode($data);
@@ -102,9 +105,8 @@ class MyBlogController extends Controller
     {
         $this->authorize('update', $blog);
         $content = $request->content;
-        libxml_use_internal_errors(true);
         $dom = new \DomDocument();
-        $dom->loadHtml('<?xml encoding="utf-8" ?>' .$content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
+        @$dom->loadHtml('<?xml encoding="utf-8" ?>' .$content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
         $imageFile = $dom->getElementsByTagName('img');
 
         foreach ($imageFile as $item => $image) {

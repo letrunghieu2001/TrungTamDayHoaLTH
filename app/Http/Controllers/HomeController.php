@@ -30,13 +30,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $news = News::latest()->limit(9)->get();
+        $news = News::latest()->take(9)->get();
         $posts = Post::join('post_hearts', 'posts.id', '=', 'post_hearts.post_id')->select('posts.*', DB::raw('count(post_hearts.id) as total_hearts'))
             ->groupBy('posts.id')
             ->orderByDesc('total_hearts')
-            ->limit(4)
+            ->inRandomOrder()->take(4)
             ->get();
-        $teachers = User::where('role_id', 2)->inRandomOrder()->get();
+        $teachers = User::where('role_id', 2)->inRandomOrder()->take(4)->get();
         return view('home.index', compact('news', 'posts', 'teachers'));
     }
 
@@ -58,8 +58,18 @@ class HomeController extends Controller
         return view('pages.dashboard', compact('money'));
     }
 
-    public function periodicTable()
+    public function periodicTableIUPAC()
     {
-        return view('home.periodic-table.index');
+        return view('home.periodic-table.indexIUPAC');
+    }
+
+    public function periodicTableLATIN()
+    {
+        return view('home.periodic-table.indexLATIN');
+    }
+
+    public function chemicalBalance()
+    {
+        return view('home.chemical-balance.index');
     }
 }

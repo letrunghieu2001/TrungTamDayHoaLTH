@@ -264,8 +264,7 @@
                                                 <a href="{{ route('news.show', [$new->id]) }}"
                                                     class="probootstrap-featured-news-box">
                                                     <div class="probootstrap-text" style="top:0; bottom: 20px">
-                                                        <h3 class="overflow">{{ $new->title }}</h3>
-                                                        <p class="overflow">{{ $new->content }}
+                                                        <h3>{{ $new->title }}</h3>
                                                         </p>
                                                         <span class="probootstrap-date"><i
                                                                 class="icon-calendar"></i>{{ $new->postTime }}</span>
