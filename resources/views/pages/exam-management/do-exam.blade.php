@@ -96,11 +96,11 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript">
         function countdown(minutes) {
-            let endTime = localStorage.getItem('countdownEndTime');
+            let endTime = sessionStorage.getItem('countdownEndTime');
             if (!endTime) {
                 endTime = new Date();
                 endTime.setMinutes(endTime.getMinutes() + minutes);
-                localStorage.setItem('countdownEndTime', endTime.getTime());
+                sessionStorage.setItem('countdownEndTime', endTime.getTime());
             } else {
                 endTime = new Date(parseInt(endTime));
             }
@@ -118,7 +118,7 @@
                     clearInterval(timer);
                     document.getElementById('countdown-timer').innerHTML = 'Hết giờ';
                     document.getElementById('submit').click();
-                    localStorage.removeItem('countdownEndTime');
+                    sessionStorage.removeItem('countdownEndTime');
                 }
             }, 1000);
         }
