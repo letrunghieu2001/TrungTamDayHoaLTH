@@ -118,7 +118,7 @@
                                                         </p>
                                                         <p class="text-xs text-secondary mb-0">{{ $blog->format_time }}</p>
                                                     </td>
-                                                    <td class="align-middle text-center text-sm">
+                                                    <td class="align-middle">
                                                         <span class="badge badge-sm bg-gradient-secondary">Đang chờ
                                                             duyệt</span>
                                                     </td>

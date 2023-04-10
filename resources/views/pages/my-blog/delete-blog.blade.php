@@ -110,7 +110,7 @@
                                                         </p>
                                                         <p class="text-xs text-secondary mb-0">{{ $blog->format_time }}</p>
                                                     </td>
-                                                    <td class="align-middle text-sm">
+                                                    <td class="align-middle">
                                                         @if ($blog->status == 1)
                                                             <span class="badge badge-sm bg-gradient-success">Đã được
                                                                 duyệt</span>
