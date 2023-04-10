@@ -161,7 +161,6 @@ class MyBlogController extends Controller
 
     public function restore($blog)
     {
-        $this->authorize('delete', $blog);
         Post::onlyTrashed()->where('user_id', Auth::user()->id)->where('id', $blog)->restore();
         return back()->with('succes', 'Bài viết trên đã được khôi phục');
     }
@@ -174,7 +173,6 @@ class MyBlogController extends Controller
 
     public function forceDelete($blog)
     {
-        $this->authorize('delete', $blog);
         Post::onlyTrashed()->where('user_id', Auth::user()->id)->where('id', $blog)->forceDelete();
         return back()->with('succes', 'Bài viết trên đã bị xóa hoàn toàn khỏi hệ thống');
     }

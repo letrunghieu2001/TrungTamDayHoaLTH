@@ -140,6 +140,7 @@ Route::controller(ReportCommentController::class)->name('report-comment.')->midd
 	Route::middleware(['admin'])->group(function () {
 		Route::get('/reportcomment/index', 'index')->name('index');
 		Route::delete('/reportcomment/delete/{reportcomment}', 'destroy')->name('delete');
+		Route::delete('/reportcomment/delete-report/{reportcomment}', 'destroyReport')->name('delete-report');
 	});
 	Route::post('/reportcomment/{comment}/store', 'store')->name('store');
 });

@@ -44,16 +44,15 @@ class GradeController extends Controller
     public function myGrade()
     {
         $user = Auth::user();
-        $exams = Exam::join('lesson_exams', 'lesson_exams.exam_id', '=', 'exams.id')
-            ->join('lessons', 'lessons.id', '=', 'lesson_exams.lesson_id')
+        $grades = Grade::join('lessons', 'lessons.id', '=', 'grades.lesson_id')
             ->join('classes', 'classes.id', '=', 'lessons.class_id')
-            ->join('grades', 'grades.exam_id', '=', 'exams.id')
             ->join('class_students', 'class_students.id', '=', 'classes.id')
+            ->join('exams', 'exams.id', '=', 'grades.exam_id')
             ->where('grades.student_id', $user->id)
-            ->select('classes.name AS class_name', 'lessons.name as lesson_name', 'exams.name as exam_name', 'exams.id as exam_id', 'grades.grade', 'lessons.id as lesson_id')
+            ->select('classes.name AS class_name', 'lessons.name as lesson_name', 'exams.name as exam_name', 'grades.exam_id as exam_id', 'lessons.id as lesson_id', 'grades.grade')
             ->get();
 
-        return view('pages.grade-management.my-grade', compact('user', 'exams'));
+        return view('pages.grade-management.my-grade', compact('user', 'grades'));
     }
 
     public function index(Request $request)
@@ -75,15 +74,14 @@ class GradeController extends Controller
     }
     public function show(User $user)
     {
-        $exams = Exam::join('lesson_exams', 'lesson_exams.exam_id', '=', 'exams.id')
-            ->join('lessons', 'lessons.id', '=', 'lesson_exams.lesson_id')
+        $grades = Grade::join('lessons', 'lessons.id', '=', 'grades.lesson_id')
             ->join('classes', 'classes.id', '=', 'lessons.class_id')
-            ->join('grades', 'grades.exam_id', '=', 'exams.id')
             ->join('class_students', 'class_students.id', '=', 'classes.id')
+            ->join('exams', 'exams.id', '=', 'grades.exam_id')
             ->where('grades.student_id', $user->id)
-            ->select('classes.name AS class_name', 'lessons.name as lesson_name', 'exams.name as exam_name', 'exams.id as exam_id', 'grades.grade', 'lessons.id as lesson_id')
+            ->select('classes.name AS class_name', 'lessons.name as lesson_name', 'exams.name as exam_name', 'grades.exam_id as exam_id', 'lessons.id as lesson_id', 'grades.grade')
             ->get();
 
-        return view('pages.grade-management.show', compact('user', 'exams'));
+        return view('pages.grade-management.show', compact('user', 'grades'));
     }
 }

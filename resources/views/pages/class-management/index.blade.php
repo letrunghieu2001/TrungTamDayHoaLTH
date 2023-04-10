@@ -174,116 +174,112 @@
                                                             <a href="{{ route('class.show', [$class->id]) }}"><i
                                                                     class="fa-solid fa-eye"></i></a>
                                                         @else
-                                                        <a href="{{ route('class.show', [$class->class_id]) }}"><i
-                                                            class="fa-solid fa-eye"></i></a>
+                                                            <a href="{{ route('class.show', [$class->class_id]) }}"><i
+                                                                    class="fa-solid fa-eye"></i></a>
                                                         @endif
-                                                            @if (Auth::user()->role_id == 1)
-                                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                                    data-bs-target="#editclassModal-{{ $class->id }}"
-                                                                    class="tt-icon-btn"><i
-                                                                        class="fa-solid fa-pen-to-square"></i></a>
-                                                                <div class="modal fade"
-                                                                    id="editclassModal-{{ $class->id }}" tabindex="-1"
-                                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content" style="width:150%">
-                                                                            <div class="modal-header">
-                                                                                <h1 class="modal-title fs-5 d-flex p-2"
-                                                                                    id="exampleModalLabel">
-                                                                                    Chỉnh sửa lớp học</h1>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <form
-                                                                                action="{{ route('class.update', [$class->id]) }}"
-                                                                                method="POST">
-                                                                                @csrf
-                                                                                <div class="modal-body">
-                                                                                    <label for="example-text-input"
-                                                                                        class="form-control-label">Tên
-                                                                                        lớp:</label>
-                                                                                    <textarea class="form-control" type="text" name="name" value="{{ $class->name ?? '' }}" rows="2"
-                                                                                        style="resize: none">{{ $class->name ?? '' }}</textarea>
-                                                                                    <label for="example-text-input"
-                                                                                        class="form-control-label">Giá tiền
-                                                                                        mỗi
-                                                                                        học
-                                                                                        sinh
-                                                                                        (tính theo VND)
-                                                                                        :</label>
-                                                                                    <input class="form-control"
-                                                                                        type="number"
-                                                                                        value="{{ $class->price_per_student ?? '' }}"
-                                                                                        min="1" step="any"
-                                                                                        name="price_per_student"
-                                                                                        rows="2"
-                                                                                        style="resize: none">
-                                                                                    <label for="example-text-input"
-                                                                                        class="form-control-label">Trạng
-                                                                                        thái</label>
-                                                                                    <select name="status"
-                                                                                        class="form-select">
-                                                                                        <option value="1"
-                                                                                            @if ($class->status == '1') selected @endif>
-                                                                                            Đang học</option>
-                                                                                        <option value="0"
-                                                                                            @if ($class->status == '0') selected @endif>
-                                                                                            Kết thúc</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button"
-                                                                                        class="btn btn-secondary"
-                                                                                        data-bs-dismiss="modal">Đóng</button>
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger">Thay
-                                                                                        đổi</button>
-                                                                                </div>
+                                                        @if (Auth::user()->role_id == 1)
+                                                            <a style="cursor: pointer" data-bs-toggle="modal"
+                                                                data-bs-target="#editclassModal-{{ $class->id }}"
+                                                                class="tt-icon-btn"><i
+                                                                    class="fa-solid fa-pen-to-square"></i></a>
+                                                            <div class="modal fade" id="editclassModal-{{ $class->id }}"
+                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content" style="width:150%">
+                                                                        <div class="modal-header">
+                                                                            <h1 class="modal-title fs-5 d-flex p-2"
+                                                                                id="exampleModalLabel">
+                                                                                Chỉnh sửa lớp học</h1>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
                                                                         </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                                <a style="cursor: pointer" data-bs-toggle="modal"
-                                                                    data-bs-target="#deleteclassModal-{{ $class->id }}"
-                                                                    class="tt-icon-btn"><i
-                                                                        class="fa-solid fa-trash"></i></a>
-                                                                <div class="modal fade"
-                                                                    id="deleteclassModal-{{ $class->id }}"
-                                                                    tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content" style="width:150%">
-                                                                            <div class="modal-header">
-                                                                                <h1 class="modal-title fs-5 d-flex p-2"
-                                                                                    id="exampleModalLabel">
-                                                                                    Ẩn lớp học</h1>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
+                                                                        <form
+                                                                            action="{{ route('class.update', [$class->id]) }}"
+                                                                            method="POST">
+                                                                            @csrf
                                                                             <div class="modal-body">
-                                                                                <p>Bạn có chắc muốn ẩn lớp học này không ?
-                                                                                </p>
-                                                                                <p>( Sau khi ẩn có thể khôi phục lại )</p>
+                                                                                <label for="example-text-input"
+                                                                                    class="form-control-label">Tên
+                                                                                    lớp:</label>
+                                                                                <textarea class="form-control" type="text" name="name" value="{{ $class->name ?? '' }}" rows="2"
+                                                                                    style="resize: none">{{ $class->name ?? '' }}</textarea>
+                                                                                <label for="example-text-input"
+                                                                                    class="form-control-label">Giá tiền
+                                                                                    mỗi
+                                                                                    học
+                                                                                    sinh
+                                                                                    (tính theo VND)
+                                                                                    :</label>
+                                                                                <input class="form-control" type="number"
+                                                                                    value="{{ $class->price_per_student ?? '' }}"
+                                                                                    min="1" step="any"
+                                                                                    name="price_per_student"
+                                                                                    rows="2" style="resize: none">
+                                                                                <label for="example-text-input"
+                                                                                    class="form-control-label">Trạng
+                                                                                    thái</label>
+                                                                                <select name="status"
+                                                                                    class="form-select">
+                                                                                    <option value="1"
+                                                                                        @if ($class->status == '1') selected @endif>
+                                                                                        Đang học</option>
+                                                                                    <option value="0"
+                                                                                        @if ($class->status == '0') selected @endif>
+                                                                                        Kết thúc</option>
+                                                                                </select>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Đóng</button>
-                                                                                <form
-                                                                                    action="{{ route('class.delete', [$class->id]) }}"
-                                                                                    method="POST">
-                                                                                    @csrf
-                                                                                    @method('DELETE')
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger">Ẩn</button>
-                                                                                </form>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger">Thay
+                                                                                    đổi</button>
                                                                             </div>
+                                                                    </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <a style="cursor: pointer" data-bs-toggle="modal"
+                                                                data-bs-target="#deleteclassModal-{{ $class->id }}"
+                                                                class="tt-icon-btn"><i class="fa-solid fa-trash"></i></a>
+                                                            <div class="modal fade"
+                                                                id="deleteclassModal-{{ $class->id }}" tabindex="-1"
+                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content" style="width:150%">
+                                                                        <div class="modal-header">
+                                                                            <h1 class="modal-title fs-5 d-flex p-2"
+                                                                                id="exampleModalLabel">
+                                                                                Ẩn lớp học</h1>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>Bạn có chắc muốn ẩn lớp học này không ?
+                                                                            </p>
+                                                                            <p>( Sau khi ẩn có thể khôi phục lại )</p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Đóng</button>
+                                                                            <form
+                                                                                action="{{ route('class.delete', [$class->id]) }}"
+                                                                                method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger">Ẩn</button>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            @endif
+                                                            </div>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

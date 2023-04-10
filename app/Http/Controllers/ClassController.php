@@ -55,7 +55,7 @@ class ClassController extends Controller
 
             return view('pages.class-management.index', compact('classes', 'calendars'));
         } else if (Auth::user()->role_id == 3) {
-            $query = ChemistryClass::query()->with('teacher', 'students', 'calendars');
+            $query = ChemistryClass::query();
 
             if ($request->has('q')) {
                 $q = trim($request->input('q'));
@@ -65,7 +65,7 @@ class ClassController extends Controller
                 });
             }
 
-            $classes = $query->join('class_students', 'class_students.class_id', '=', 'classes.id')->where('class_students.student_id', Auth::user()->id)->latest('classes.created_at')->paginate(9);
+            $classes = $query->join('class_students', 'class_students.class_id', '=', 'classes.id')->where('class_students.student_id', Auth::user()->id)->select('*','classes.id AS id')->with('teacher', 'students', 'calendars')->latest('classes.created_at')->paginate(9);
 
             $calendars = CalendarsInClass::all();
 

@@ -12,7 +12,13 @@ class ReportCommentController extends Controller
 {
     public function index()
     {
-        $reportComments = ReportComment::query()->with('comment','user_created','user_comment')->latest()->paginate(9);
+        $reportComments = ReportComment::query()
+        ->join('comments','comments.id','=','report_comments.comment_id')
+        ->join('posts','posts.id','=','comments.post_id')
+        ->select('*','report_comments.id as reportcomment_id','posts.id as post_id')
+        ->with('comment','user_created','user_comment')
+        ->latest('report_comments.created_at')
+        ->paginate(9);
         return view('pages.reportcomment-management.index', compact('reportComments'));
     }
     public function store(CreateReportCommentRequest $request, Comment $comment)
@@ -31,5 +37,10 @@ class ReportCommentController extends Controller
         $reportcomment->delete();
         Comment::where('id', $reportcomment->comment->id)->delete();
         return back()->with('succes', 'Bình luận đã được xóa');
+    }
+    public function destroyReport(ReportComment $reportcomment)
+    {
+        $reportcomment->delete();
+        return back()->with('succes', 'Báo cáo đã được xóa');
     }
 }

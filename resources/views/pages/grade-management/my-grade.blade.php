@@ -32,7 +32,7 @@
                             <div class="tab-pane fade active show" id="nav-home" role="tabpanel"
                                 aria-labelledby="nav-home-tab">
                                 <table class="table align-items-center mb-0">
-                                    @if (count($exams) > 0)
+                                    @if (count($grades) > 0)
                                         <thead>
                                             <tr>
                                                 <th
@@ -48,26 +48,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($exams as $exam)
+                                            @foreach ($grades as $grade)
                                                 <tr>
                                                     <td class="align-middle">
                                                         <span
-                                                            class="text-secondary overflow text-xs font-weight-bold">{{ $exam->exam_name }}</span>
+                                                            class="text-secondary overflow text-xs font-weight-bold">{{ $grade->exam_name }}</span>
                                                     </td>
                                                     <td>
                                                         <p class="text-xs font-weight-bold mb-0">Tên lớp:
-                                                            {{ $exam->class_name }}
+                                                            {{ $grade->class_name }}
                                                         </p>
                                                         <p class="text-xs text-secondary mb-0">
-                                                            Tên buổi học: {{ $exam->lesson_name }}</p>
+                                                            Tên buổi học: {{ $grade->lesson_name }}</p>
                                                     </td>
                                                     <td class="align-middle">
                                                         <span
-                                                            class="text-secondary overflow text-xs font-weight-bold">{{ $exam->grade }}</span>
+                                                            class="text-secondary overflow text-xs font-weight-bold">{{ $grade->grade }}</span>
                                                     </td>
                                                     <td>
                                                         <a
-                                                            href="{{ route('exam.result-exam', [$exam->exam_id, $exam->lesson_id, Auth::user()->id]) }}"><i
+                                                            href="{{ route('exam.result-exam', [$grade->exam_id, $grade->lesson_id, Auth::user()->id]) }}"><i
                                                                 class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                                     </td>
                                                 </tr>

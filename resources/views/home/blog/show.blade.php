@@ -18,7 +18,7 @@
         .modal-backdrop {
             z-index: -1;
         }
-        </style>
+    </style>
     <section class="probootstrap-section probootstrap-section-sm">
         <div class="container">
             <div class="row">
@@ -123,7 +123,7 @@
                             @if (count($comments) > 0)
                                 @foreach ($comments as $comment)
                                     <div class="col-md-1 col-2 avatar-comment">
-                                        <img class="img-circle" style="width: 80px; margin-left: -20px"
+                                        <img class="img-circle" style="width: 80px; margin-left: -20px; height: 80px"
                                             src="{{ asset('storage/avatar/' . optional($comment->user)->avatar) }}">
                                     </div>
                                     <div class="col-md-11 col-10 comment-username">
@@ -220,66 +220,66 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal fade" id="reportCommentModal-{{ $comment->id }}"
-                                                tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width:150%">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5 d-flex p-2" id="exampleModalLabel">
-                                                                Báo cáo comment</h1>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close"><span
-                                                                    aria-hidden="true">&times;</span></button>
-                                                        </div>
-                                                        @if (Auth::check())
-                                                            @if (is_null($isCommentReported[$comment->id]))
-                                                                <form class="report-comment-form-{{ $comment->id }}">
-                                                                    <div class="modal-body">
-                                                                        <div>Tại sao bạn muốn báo cáo bình luận này ? </div>
-                                                                        <input type="radio" id="reportComment1"
-                                                                            name="reportComment"
-                                                                            value="Nội dung không liên quan đến bài viết"
-                                                                            checked>
-                                                                        <label for="reportComment1"> Nội dung không liên
-                                                                            quan
-                                                                            đến
-                                                                            bài
-                                                                            viết</label><br>
-                                                                        <input type="radio" id="reportComment2"
-                                                                            name="reportComment" value="Spam">
-                                                                        <label for="reportComment2"> Spam</label><br>
-                                                                        <input type="radio" id="reportComment3"
-                                                                            name="reportComment"
-                                                                            value="Chứa ngôn từ không phù hợp">
-                                                                        <label for="reportComment3"> Chứa ngôn từ không phù
-                                                                            hợp</label><br>
-                                                                    </div>
-                                                                @else
-                                                                    <div class="modal-body">
-                                                                        Bạn đã báo cáo bình luận này rồi. Hãy chờ admin giải
-                                                                        quyết
-                                                                    </div>
-                                                            @endif
-                                                            <div class="modal-footer"
-                                                                style="display: flex; justify-content: space-between">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Đóng</button>
-                                                                @if (Auth::check())
-                                                                    @if (is_null($isCommentReported[$comment->id]))
-                                                                        <button type="button"
-                                                                            class="btn btn-danger button-report-comment-{{ $comment->id }}"
-                                                                            data-url='{{ route('report-comment.store', [$comment->id]) }}'
-                                                                            data-id="{{ $comment->id }}">Báo
-                                                                            cáo</button>
-                                                                    @endif
-                                                                @endif
-                                                            </div>
-                                                            </form>
-                                                        @endif
+                                        @endcan
+                                        <div class="modal fade" id="reportCommentModal-{{ $comment->id }}"
+                                            tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="width:150%">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5 d-flex p-2" id="exampleModalLabel">
+                                                            Báo cáo comment</h1>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close"><span
+                                                                aria-hidden="true">&times;</span></button>
                                                     </div>
+                                                    @if (Auth::check())
+                                                        @if (is_null($isCommentReported[$comment->id]))
+                                                            <form class="report-comment-form-{{ $comment->id }}">
+                                                                <div class="modal-body">
+                                                                    <div>Tại sao bạn muốn báo cáo bình luận này ? </div>
+                                                                    <input type="radio" id="reportComment1"
+                                                                        name="reportComment"
+                                                                        value="Nội dung không liên quan đến bài viết"
+                                                                        checked>
+                                                                    <label for="reportComment1"> Nội dung không liên
+                                                                        quan
+                                                                        đến
+                                                                        bài
+                                                                        viết</label><br>
+                                                                    <input type="radio" id="reportComment2"
+                                                                        name="reportComment" value="Spam">
+                                                                    <label for="reportComment2"> Spam</label><br>
+                                                                    <input type="radio" id="reportComment3"
+                                                                        name="reportComment"
+                                                                        value="Chứa ngôn từ không phù hợp">
+                                                                    <label for="reportComment3"> Chứa ngôn từ không phù
+                                                                        hợp</label><br>
+                                                                </div>
+                                                            @else
+                                                                <div class="modal-body">
+                                                                    Bạn đã báo cáo bình luận này rồi. Hãy chờ admin giải
+                                                                    quyết
+                                                                </div>
+                                                        @endif
+                                                        <div class="modal-footer"
+                                                            style="display: flex; justify-content: space-between">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Đóng</button>
+                                                            @if (Auth::check())
+                                                                @if (is_null($isCommentReported[$comment->id]))
+                                                                    <button type="button"
+                                                                        class="btn btn-danger button-report-comment-{{ $comment->id }}"
+                                                                        data-url='{{ route('report-comment.store', [$comment->id]) }}'
+                                                                        data-id="{{ $comment->id }}">Báo
+                                                                        cáo</button>
+                                                                @endif
+                                                            @endif
+                                                        </div>
+                                                        </form>
+                                                    @endif
                                                 </div>
                                             </div>
-                                        @endcan
+                                        </div>
                                     @endif
                                     <div class="col-md-1 col-2">
                                     </div>

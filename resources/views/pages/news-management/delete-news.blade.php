@@ -112,6 +112,8 @@
                                                         <a style="cursor: pointer" data-bs-toggle="modal"
                                                             data-bs-target="#deleteUserModal-{{ $new->id }}"
                                                             class="tt-icon-btn"><i class="fa-solid fa-ban"></i></a>
+                                                            <i
+                                                                class="fa-solid fa-arrow-up-right-from-square"></i>
                                                         <div class="modal fade" id="deleteUserModal-{{ $new->id }}"
                                                             tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
