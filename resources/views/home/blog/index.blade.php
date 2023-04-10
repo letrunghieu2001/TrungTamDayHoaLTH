@@ -70,6 +70,8 @@
                                 </span>
                                 <span class="probootstrap-location"><i
                                         class="icon-question"></i>{{ $blog->category->academic_level . ' - ' . $blog->category->question_level }}</span>
+                                <span class="probootstrap-location"><i
+                                        class="icon-heart"></i>{{ DB::table('post_hearts')->where('post_id', $blog->id)->count() }}</span>
                             </div>
                         </a>
                     </div>
